@@ -1,0 +1,25 @@
+
+body {
+    background-color: teal;
+}
+
+ main {
+     height: 100%;
+     width: 100%;
+ }
+
+header {
+    height: 100%;
+    width: 100%;
+}
+
+footer {
+    height: 100%;
+    width: 100%;
+}
+.logo {
+  font-size: 9em;
+  color: white;
+  font-family: "Courier New";
+  font-weight: bold;
+}

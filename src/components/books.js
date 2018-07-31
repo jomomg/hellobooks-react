@@ -1,69 +1,51 @@
-import React, {Component} from 'react'
-import './css/books.css'
+import React from 'react';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import {Link} from 'react-router-dom';
+import api from '../utils/requests';
 import TopNav from './navbar'
-import axios from 'axios'
-import AddBook from './add_book'
 
-const books_url = "https://hello-kitabu.herokuapp.com/api/v1/books";
+const books_url = "books";
 
-const EditButton = () => {
-    return (
-        <a className="btn-floating btn waves-effect waves-light blue modal-trigger"><i
-            className="material-icons">edit</i></a>
-    )
-};
-
-const DeleteButton = () => {
-    return (
-        <a className="btn-floating btn waves-effect waves-light red modal-trigger"
-           ><i className="material-icons">delete</i></a>
-    )
-};
-
-const FixedAddButton = () => {
-    return (
-        <div className="fixed-action-btn">
-            <a className="btn-floating tooltipped btn-large waves-effect green modal-trigger" data-target="create-modal"
-               data-position="top" data-delay="50" data-tooltip="Add a new book">
-                <i className="large material-icons">add</i>
-            </a>
-        </div>
-    )
-};
-
-
-const BookItem = (props) => {
+const BookCard = (props)=> {
     return (
         <React.Fragment>
-            <li className="collection-item avatar">
-                <img className="circle" src="http://placehold.it/100x100"/>
-                <div id="book-info">
-                    <p>Title: {props.bookInfo.title}</p>
-                    <p>Author: {props.bookInfo.author}</p>
-                    <p>Book ID: {props.bookInfo.id}</p>
-                    <p>Publisher: {props.bookInfo.publisher}</p>
-                    <p>Year: {props.bookInfo.publication_year}</p>
-                    <p>Edition: {props.bookInfo.edition}</p>
-                    <p>Category: {props.bookInfo.category}</p>
-                    <p>Subcategory: {props.bookInfo.subcategory}</p>
-                </div>
-                    <ul className="secondary-content">
-                        <li>
-                            <EditButton/>
-                            <DeleteButton/>
-                        </li>
-                    </ul>
-            </li>
+        <Grid item xs={6} sm={3}>
+            <Card style={{maxWidth: 200, maxHeight: 370}}>
+                <CardMedia
+                    style={{height: 200,}}
+                    image="http://placehold.it/100x200"
+                    title="Book Cover"
+                />
+                <CardContent>
+                    <Typography gutterBottom variant="headline" component="h2">
+                        {props.title}
+                    </Typography>
+                    <Typography component="p">
+                        {props.author}
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Button size="small" color="primary">
+                        <Link to={`/books/${props.id}`}>More</Link>
+                    </Button>
+                </CardActions>
+            </Card>
+        </Grid>
         </React.Fragment>
-    );
+    )
 };
 
-
-class BookPage extends Component {
+class BookPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            books: []
+            books: [],
         }
     }
 
@@ -73,7 +55,7 @@ class BookPage extends Component {
 
     getBooks = async ()=> {
         try {
-            const response = await axios.get(books_url);
+            const response = await api.get(books_url);
             const books = response.data;
             this.setState({books});
             console.log(response);
@@ -86,19 +68,18 @@ class BookPage extends Component {
         return (
             <div>
                 <TopNav/>
-                <div className="container">
-                    <div className="section">
-                        <ul className="collection">
-                            {
-                                this.state.books.map(book => <BookItem bookInfo={book} key={book.id}/>)
-                            }
-                        </ul>
-                    </div>
+                <div style={{marginLeft: '10%', marginRight: '5%', marginTop: '1%'}}>
+                <Grid container spacing={24}>
+                    {this.state.books.map(book => {
+                        return (
+                            <BookCard key={book.id} title={book.title} author={book.author} id={book.id}/>
+                        )
+                    })}
+                </Grid>
                 </div>
-                <FixedAddButton/>
             </div>
         )
     }
 }
 
-export default BookPage
+export default BookPage;

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import './css/login.css'
 import {Row, Input} from 'react-materialize'
-import axios from "axios/index";
-import Auth from '../utils/authentication'
+import api from "../utils/requests";
+import Auth from '../utils/authentication';
+import { Redirect } from 'react-router-dom';
 
-const login_url = 'https://hello-kitabu.herokuapp.com/api/v1/auth/login';
+const login_url = '/auth/login';
 
 class LoginForm extends Component {
     constructor(props) {
@@ -12,24 +13,23 @@ class LoginForm extends Component {
         this.state = {
             email: "",
             password: "",
+            redirectToReferrer: false
         }
 
     }
 
     sendLoginInfo = async() => {
         try {
-            const response = await axios.post(login_url, {
+            const response = await api.post(login_url, {
                 email: this.state.email,
                 password: this.state.password,
-                success: false,
             });
             console.log(response);
             if (response.status === 200) {
                 Auth.authenticate();
                 const accessToken = response.data.access_token;
                 localStorage.setItem('accessToken', accessToken);
-                const success = true;
-                this.setState({success});
+                this.setState({redirectToReferrer: true});
             } else {
 
             }
@@ -47,6 +47,13 @@ class LoginForm extends Component {
     };
 
     render() {
+        const { from } = this.props.location.state || { from : {pathname: '/'}};
+        const { redirectToReferrer } = this.state;
+
+        if (redirectToReferrer) {
+            return <Redirect to={ from } />
+        }
+
         return (
             <div className="login-form z-depth-3 ">
                 <h5 style={{textAlign: 'center'}}>Sign In to HelloBooks</h5>

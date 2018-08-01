@@ -6,6 +6,7 @@ import BookPage from './components/books'
 import Auth from './utils/authentication'
 import SignIn from './components/login'
 import UserProfilePage from './components/user_profile'
+import SingleBookPage from './components/single_book'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -35,7 +36,7 @@ class App extends Component {
                  <Route path="/signin" component={SignIn}/>
                  <Route path="/books" exact component={BookPage}/>
                  <PrivateRoute path="/profile" component={UserProfilePage}/>
-                 {/*<Route path="/books/:id" component={SingleBookPage}/>*/}
+                 <Route path="/books/:id" component={SingleBookPage}/>
              </Switch>
          </React.Fragment>
      )

@@ -6,8 +6,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import {Link} from 'react-router-dom';
 import api from '../utils/requests';
+import Paper from '@material-ui/core/Paper'
 import TopNav from './navbar'
 
 const books_url = "books";
@@ -31,7 +33,7 @@ const BookCard = (props)=> {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small" color="primary">
+                    <Button variant={'outlined'} size="small">
                         <Link to={`/books/${props.id}`}>More</Link>
                     </Button>
                 </CardActions>
@@ -46,6 +48,8 @@ class BookPage extends React.Component {
         super(props);
         this.state = {
             books: [],
+            loading: true,
+            error: ""
         }
     }
 
@@ -55,28 +59,51 @@ class BookPage extends React.Component {
 
     getBooks = async ()=> {
         try {
+            this.setState({loading: true});
             const response = await api.get(books_url);
             const books = response.data;
-            this.setState({books});
+            this.setState({books, loading: false});
             console.log(response);
         } catch (error) {
-            console.log(error);
+            console.error('error: ', error);
+            this.setState({error: `${error}`, loading: false});
         }
     };
 
     render() {
+        const { loading, error } = this.state;
+        if (loading) {
+            return (
+                <div>
+                    <TopNav/>
+                    <LinearProgress variant="query" />
+                </div>
+            )
+        }
+
+        if (error) {
+            return (
+                <div>
+                    <TopNav/>
+                    <Paper style={{margin: '10% auto 1% auto', maxWidth: 300, backgroundColor: 'red', textAlign: 'center'}}>
+                        <span style={{color: 'white'}}>{error}</span>
+                    </Paper>
+                        <Button style={{marginLeft: '46%', marginRight: '40%', backgroundColor: 'red'}} variant='contained' color={'primary'} onClick={this.getBooks}>Try Again</Button>
+                </div>
+            )
+        }
         return (
             <div>
                 <TopNav/>
-                <div style={{marginLeft: '10%', marginRight: '5%', marginTop: '1%'}}>
-                <Grid container spacing={24}>
-                    {this.state.books.map(book => {
-                        return (
-                            <BookCard key={book.id} title={book.title} author={book.author} id={book.id}/>
-                        )
-                    })}
-                </Grid>
-                </div>
+                    <div style={{marginLeft: '10%', marginRight: '5%', marginTop: '1%'}}>
+                        <Grid container spacing={24}>
+                            {this.state.books.map(book => {
+                                return (
+                                    <BookCard key={book.id} title={book.title} author={book.author} id={book.id}/>
+                                )
+                            })}
+                        </Grid>
+                    </div>
             </div>
         )
     }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './css/landing.css'
 
 
@@ -18,8 +18,8 @@ const LandingPage = () => {
            <div style={{backgroundColor: 'teal', margin: '0'}}>
                <div className="container">
                    <p className="logo">Hello Books</p>
-                   <a className="btn-flat orange" href="/signin" style={buttonStyle}>SIGN IN</a>
-                   <a className="btn-flat orange" href="/signup" style={buttonStyle}>SIGN UP</a>
+                   <a className="btn-flat orange" href="/login" style={buttonStyle}>SIGN IN</a>
+                   <a className="btn-flat orange" href="/register" style={buttonStyle}>SIGN UP</a>
                    <span>or</span>
                    <a className="btn-flat orange" href="/books" style={buttonStyle}>SEE ALL OUR BOOKS</a>
                </div>
@@ -28,11 +28,11 @@ const LandingPage = () => {
                <div className="container">
                    <div className="row">
                        <div className="col l6 s12">
-                           <h5 className="white-text">Welcome to Hello Books</h5>
-                           <p className="grey-text text-lighten-4">
+                           <h4 className="white-text">Welcome to Hello Books</h4>
+                           <h5 className="grey-text text-lighten-4">
                                Here you can borrow a book or two from our collection, enjoy it,
                                return it, and repeat the process
-                           </p>
+                           </h5>
                        </div>
                    </div>
                </div>

@@ -94,7 +94,7 @@ class BookPage extends React.Component {
         }
         return (
             <div>
-                <TopNav/>
+                <TopNav title={'All Books'}/>
                     <div style={{marginLeft: '10%', marginRight: '5%', marginTop: '1%'}}>
                         <Grid container spacing={24}>
                             {this.state.books.map(book => {

@@ -18,7 +18,7 @@ const BookInfo = (props)=> {
     return(
         <React.Fragment>
             <Grid item xs={4}>
-            <Card style={{width: 320, height: 420}}>
+            <Card style={{width: 320, height: 440}}>
                 <CardMedia
                     style={{height: 0, paddingTop: '90%',}}
                     image="http://placehold.it/300x400"
@@ -44,10 +44,10 @@ const SideInfo = (props)=> {
     return (
         <React.Fragment>
             <Grid item xs={4}>
-                <Card style={{width: '320px', height: '420px'}}>
+                <Card style={{width: '320px', height: '440px'}}>
                     <CardContent>
                         <Typography variant="headline" component="h2">About this book</Typography>
-                        <Divider/><br/>
+                        <Divider/>
                         <Typography>{props.book.description}</Typography>
                         <Divider/><br/>
                         <Typography component="p">Publisher: {props.book.publisher}</Typography>
@@ -95,9 +95,9 @@ class SingleBookPage extends Component {
     render() {
         return(
             <div>
-                <TopNav/>
-                <div style={{marginLeft: '24%', marginTop: '1%'}}>
-                    <Grid container spacing={24}>
+                <TopNav title={'Book Info'}/>
+                <div style={{marginLeft: '24%', marginRight: '1%', marginTop: '1%'}}>
+                    <Grid container spacing={16}>
                     <BookInfo isAvailable={this.isAvailable} book={this.state.book}/>
                     <SideInfo isAvailable={this.isAvailable} book={this.state.book}/>
                     </Grid>

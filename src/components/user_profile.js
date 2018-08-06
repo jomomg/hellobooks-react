@@ -12,21 +12,23 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography'
 import api from '../utils/requests'
 import TopNav from './navbar';
+import Auth from '../utils/authentication';
 
 const UserAvatar = ()=> {
+    const { first_name, last_name, email } = Auth.getUserInfo();
     return (
         <div>
 
             <Card style={{width: 220, margin: '1% auto 1% auto'}}>
                     <Avatar style={{height: 150, width: 150, margin: '1% auto 1% auto', backgroundColor: 'red'}}>
-                        A
+                        {first_name.charAt(0)}
                     </Avatar>
                 <CardContent style={{color: 'white'}}>
                     <Typography style={{textAlign: 'center', fontStyle: 'bold'}} component="p">
-                        IamAUser
+                        {`${first_name} ${last_name}`}
                     </Typography>
                     <Typography style={{textAlign: 'center'}} component="p">
-                        user@example.com
+                        {`${email}`}
                     </Typography>
                 </CardContent>
             </Card>
@@ -76,13 +78,13 @@ class UserProfilePage extends Component {
     getBorrowingHistory = () => {
         api.get('users/books')
             .then(res => { this.setState({borrowingHistory: res.data}); console.log(res.data) })
-            .catch(err => { this.setState({errors: err.response.data.message}); console.log(err.response.data.message)})
+            .catch(err => { console.log(err.response)})
     };
 
     getUnReturnedBooks = ()=> {
         api.get('users/books?returned=false')
             .then(res => {this.setState({unReturnedBooks: res.data}); console.log(res)})
-            .catch(err => {this.setState({errors: err.response.data.message})})
+            .catch(err => {console.log(err)})
     };
 
     returnBook = (bookID)=> {
@@ -100,7 +102,7 @@ class UserProfilePage extends Component {
     render () {
         return (
             <div>
-            <TopNav/>
+            <TopNav title={'My Profile'}/>
                 <div style={{margin: '5%'}}>
                 <UserAvatar/>
                 </div>

@@ -1,13 +1,20 @@
 import React, { Component } from 'react'
-import './css/login.css'
-import {Row, Input} from 'react-materialize'
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import api from "../utils/requests";
 import Auth from '../utils/authentication';
 import { Redirect } from 'react-router-dom';
 
 const login_url = '/auth/login';
+const inputStyles = {
+    marginLeft: '4%',
+    marginRight: '4%',
+    width: '400px'
+};
 
-class LoginForm extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -42,12 +49,12 @@ class LoginForm extends Component {
         this.sendLoginInfo();
     };
 
-    handleChange = (event) => {
-        this.setState({[event.target.name]: event.target.value})
+    handleChange = name => (event) => {
+        this.setState({[name]: event.target.value})
     };
 
     render() {
-        const { from } = this.props.location.state || { from : {pathname: '/'}};
+        const { from } = this.props.location.state || { from : {pathname: '/books'}};
         const { redirectToReferrer } = this.state;
 
         if (redirectToReferrer) {
@@ -55,34 +62,42 @@ class LoginForm extends Component {
         }
 
         return (
-            <div className="login-form z-depth-3 ">
-                <h5 style={{textAlign: 'center'}}>Sign In to HelloBooks</h5>
-                <Row>
-                    <Input
-                        name="email"
-                        type="email"
-                        label="Email"
-                        s={12}
-                        value={this.state.email}
-                        onChange={this.handleChange}/>
-                    <Input
-                        name="password"
-                        type="password"
-                        label="password"
-                        s={12}
-                        value={this.state.password}
-                        onChange={this.handleChange}/>
-                    <div style={{textAlign: 'center'}}>
-                    <button
-                        onClick={this.handleClick}
-                        className="btn waves-effect waves-light"
-                        type="submit"
-                        name="submit">SIGN IN</button>
-                    </div>
-                </Row>
-            </div>
+            <Paper style={{margin: '5% auto 5% auto', width: 400, height: 280}}>
+                <Typography variant={'headline'} component={'h2'} style={{paddingTop: '3%', textAlign: 'center'}}>
+                    Login to Hello Books
+                </Typography>
+            <form style={{display: 'flex', flexWrap: 'wrap'}}>
+                <TextField
+                    style={inputStyles}
+                    type={'email'}
+                    id="email"
+                    label="Email"
+                    placeholder="Your email address"
+                    value={this.state.email}
+                    onChange={this.handleChange('email')}
+                    margin="normal"
+                />
+                <TextField
+                    style={inputStyles}
+                    type={'password'}
+                    id="password"
+                    label="Password"
+                    placeholder="Enter a password"
+                    value={this.state.password}
+                    onChange={this.handleChange('password')}
+                    margin="normal"
+                />
+                <Button
+                    onClick={this.handleClick}
+                    variant={'extendedFab'}
+                    color={'primary'}
+                    style={{margin: '4% auto 0% auto', backgroundColor: 'orange', color: 'black'}}
+                >LOGIN
+                </Button>
+            </form>
+            </Paper>
         )
     }
 }
 
-export default LoginForm;
+export default Login;

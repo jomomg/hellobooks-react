@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom'
 import LandingPage from './components/landing'
-import SignUp from './components/signup'
+import Register from './components/register'
 import BookPage from './components/books'
 import Auth from './utils/authentication'
-import SignIn from './components/login'
+import Login from './components/login'
 import UserProfilePage from './components/user_profile'
 import SingleBookPage from './components/single_book'
+import AdminPage from './components/admin'
+import EditBook from './components/edit_book'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -17,7 +19,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
             ) : (
                 <Redirect
                     to={{
-                        pathname: "/signin",
+                        pathname: "/login",
                         state: { from: props.location }
                     }}
                 />
@@ -32,11 +34,13 @@ class App extends Component {
          <React.Fragment>
              <Switch>
                  <Route path="/" exact component={LandingPage}/>
-                 <Route path="/signup" component={SignUp}/>
-                 <Route path="/signin" component={SignIn}/>
+                 <Route path="/register" component={Register}/>
+                 <Route path="/login" component={Login}/>
                  <Route path="/books" exact component={BookPage}/>
-                 <PrivateRoute path="/profile" component={UserProfilePage}/>
                  <Route path="/books/:id" component={SingleBookPage}/>
+                 <PrivateRoute path="/admin" component={AdminPage}/>
+                 <PrivateRoute path="/profile" component={UserProfilePage}/>
+                 <PrivateRoute path="/edit/:id" component={EditBook}/>
              </Switch>
          </React.Fragment>
      )

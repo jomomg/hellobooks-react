@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import api from '../utils/requests';
-import TopNav from './navbar'
 import Card from '@material-ui/core/Card';
 import Chip from '@material-ui/core/Chip';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -8,11 +6,15 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Divider from '@material-ui/core/Divider'
-import CheckCircleOutline from '@material-ui/icons/CheckCircleOutline'
-import ErrorOutline from '@material-ui/icons/ErrorOutline'
+import Divider from '@material-ui/core/Divider';
+import CheckCircleOutline from '@material-ui/icons/CheckCircleOutline';
+import ErrorOutline from '@material-ui/icons/ErrorOutline';
+import api from '../utils/requests';
+import TopNav from './navbar'
+import Auth from '../utils/authentication'
+import Notifier, { notify } from './notifier';
 
 const BookInfo = (props)=> {
     return(
@@ -29,8 +31,8 @@ const BookInfo = (props)=> {
                     <Typography component="h2">{props.book.author}</Typography>
                 </CardContent>
                 <CardActions style={{display: 'flex'}} disableActionSpacing>
-                    {props.isAvailable &&
-                    <Button aria-label="Borrow this book" style={{backgroundColor: 'orange'}}>
+                    {Auth.isAuthenticated &&
+                    <Button onClick={props.handleClick} aria-label="Borrow this book" style={{backgroundColor: 'orange'}}>
                         Borrow this book
                     </Button>}
                 </CardActions>
@@ -76,6 +78,7 @@ class SingleBookPage extends Component {
        this.state = {
            book: {},
            errors: null,
+           message: '',
        }
    }
     getSingleBook = (bookID) => {
@@ -83,6 +86,20 @@ class SingleBookPage extends Component {
             .then(res => {this.setState({book: res.data}); console.log(res.data)})
             .catch(err => {this.setState({errors: err.response.data}); console.log(this.state.errors)})
     };
+
+   borrowBook = bookID => () => {
+       api.post(`users/books/${bookID}`)
+           .then(res => {
+               this.setState({message: res.data.message});
+               notify({message: this.state.message, variant: 'success'});
+           })
+           .catch(err => {
+               console.log(err);
+               this.setState({errors: err.response.data.msg });
+               notify({message: this.state.errors, variant: 'error'})
+           })
+   };
+
 
    isAvailable = () => {
        return this.state.book.available >= 1;
@@ -98,8 +115,14 @@ class SingleBookPage extends Component {
                 <TopNav title={'Book Info'}/>
                 <div style={{marginLeft: '24%', marginRight: '1%', marginTop: '1%'}}>
                     <Grid container spacing={16}>
-                    <BookInfo isAvailable={this.isAvailable} book={this.state.book}/>
-                    <SideInfo isAvailable={this.isAvailable} book={this.state.book}/>
+                    <BookInfo
+                        isAvailable={this.isAvailable}
+                        book={this.state.book}
+                        handleClick={this.borrowBook(this.props.match.params.id)}/>
+                    <SideInfo
+                        isAvailable={this.isAvailable}
+                        book={this.state.book}/>
+                    <Notifier/>
                     </Grid>
                 </div>
             </div>

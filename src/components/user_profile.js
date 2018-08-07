@@ -84,7 +84,10 @@ class UserProfilePage extends Component {
     getUnReturnedBooks = ()=> {
         api.get('users/books?returned=false')
             .then(res => {this.setState({unReturnedBooks: res.data}); console.log(res)})
-            .catch(err => {console.log(err)})
+            .catch(err => {
+                console.log(err);
+                this.setState({unReturned: []})
+            })
     };
 
     returnBook = (bookID)=> {

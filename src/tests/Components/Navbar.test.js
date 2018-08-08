@@ -4,7 +4,6 @@ import { mount } from 'enzyme';
 import { BrowserRouter as R } from 'react-router-dom';
 import { shallowToJson } from 'enzyme-to-json';
 import Auth from '../../utils/authentication';
-import Typography from '@material-ui/core/Typography'
 
 describe('<TopNav/>', ()=>{
     const nav = mount(<R><TopNav title="my nav" history={[]}/></R>);

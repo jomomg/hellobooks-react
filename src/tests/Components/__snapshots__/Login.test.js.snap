@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login/> it renders successfully 1`] = `
+<WithStyles(Paper)
+  style={
+    Object {
+      "height": 280,
+      "margin": "5% auto 5% auto",
+      "width": 400,
+    }
+  }
+>
+  <WithStyles(Typography)
+    component="h2"
+    style={
+      Object {
+        "paddingTop": "3%",
+        "textAlign": "center",
+      }
+    }
+    variant="headline"
+  >
+    Login to Hello Books
+  </WithStyles(Typography)>
+  <form
+    noValidate={true}
+    onSubmit={[Function]}
+    style={
+      Object {
+        "display": "flex",
+        "flexWrap": "wrap",
+      }
+    }
+  >
+    <TextField
+      id="email"
+      label="Email"
+      margin="normal"
+      onChange={[Function]}
+      placeholder="Your email address"
+      required={false}
+      select={false}
+      style={
+        Object {
+          "marginLeft": "4%",
+          "marginRight": "4%",
+          "width": "400px",
+        }
+      }
+      type="email"
+      value=""
+    />
+    <TextField
+      id="password"
+      label="Password"
+      margin="normal"
+      onChange={[Function]}
+      placeholder="Enter a password"
+      required={false}
+      select={false}
+      style={
+        Object {
+          "marginLeft": "4%",
+          "marginRight": "4%",
+          "width": "400px",
+        }
+      }
+      type="password"
+      value=""
+    />
+    <WithStyles(Button)
+      color="primary"
+      style={
+        Object {
+          "backgroundColor": "orange",
+          "color": "black",
+          "margin": "4% auto 0% auto",
+        }
+      }
+      type="submit"
+      variant="extendedFab"
+    >
+      LOGIN
+    </WithStyles(Button)>
+  </form>
+  <Notifier />
+</WithStyles(Paper)>
+`;

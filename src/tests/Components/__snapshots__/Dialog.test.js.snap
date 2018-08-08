@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DeleteDialog/> it renders successfully 1`] = `
+<div>
+  <WithStyles(Dialog)
+    aria-describedby="alert-dialog-description"
+    aria-labelledby="alert-dialog-title"
+  >
+    <WithStyles(DialogTitle)
+      id="alert-dialog-title"
+    >
+      Delete Book
+    </WithStyles(DialogTitle)>
+    <WithStyles(DialogContent)>
+      <WithStyles(DialogContentText)
+        id="alert-dialog-description"
+      >
+        Are You sure you want to delete this book?
+      </WithStyles(DialogContentText)>
+    </WithStyles(DialogContent)>
+    <WithStyles(DialogActions)>
+      <WithStyles(Button)
+        style={
+          Object {
+            "backgroundColor": "green",
+            "color": "white",
+          }
+        }
+      >
+        Yes
+      </WithStyles(Button)>
+      <WithStyles(Button)
+        autoFocus={true}
+        color="primary"
+        style={
+          Object {
+            "backgroundColor": "red",
+            "color": "white",
+          }
+        }
+      >
+        No
+      </WithStyles(Button)>
+    </WithStyles(DialogActions)>
+  </WithStyles(Dialog)>
+</div>
+`;

@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import api from '../utils/requests';
+import Notifier, {notify} from "./notifier";
 
 const inputStyles = {
     marginLeft: '4%',
@@ -38,9 +39,12 @@ class EditBook extends React.Component {
     };
 
     editBook = (bookID)=> {
+        console.log(this.state);
         api.put(`books/${bookID}`, this.state)
-            .then(this.props.history.push("/admin"))
-            .catch(err => console.log(err))
+            .then(res=>{
+                notify({message: res.data.msg, variant: 'success'}, ()=>{this.props.history.push('/admin')})
+            })
+            .catch(err => console.log(err.response.data.msg))
     };
 
     retrieveBook = (bookID)=> {
@@ -59,7 +63,7 @@ class EditBook extends React.Component {
                     subcategory: data.subcategory,
                     description: data.description
                 });
-            }).catch(err => console.log(err))
+            }).catch(err => console.log(`${err}`))
     };
 
     componentDidMount() {
@@ -163,21 +167,21 @@ class EditBook extends React.Component {
                             margin="normal"
                         />
                         <Button
-                            // onClick={this.handleClick(this.props.match.params.id)}
-                            type={'submit'}
-                            // component={'submit'}
-                            variant={'extendedFab'}
+                            type="submit"
+                            variant={'contained'}
                             color={'primary'}
                             style={{
                                 backgroundColor: 'orange',
                                 color: 'black',
                                 position: 'absolute',
                                 bottom: '10px',
-                                left: 200
+                                left: 195,
+                                width: 40
                             }}
-                        >EDIT BOOK
+                        >SAVE
                         </Button>
                     </form>
+                <Notifier/>
             </Paper>
         )
     }

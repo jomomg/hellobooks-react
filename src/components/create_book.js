@@ -11,7 +11,7 @@ const inputStyles = {
     width: '400px'
 };
 
-const CreateBook =(props)=> {
+const CreateBook = (props)=> {
         return (
             <Dialog
                 open={props.open}

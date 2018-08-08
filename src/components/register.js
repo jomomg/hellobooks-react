@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {withRouter} from 'react-router-dom';
 import api from '../utils/requests';
+import Notifier, {notify} from "./notifier";
 
 const register_url = 'auth/register';
 
@@ -22,6 +23,8 @@ class Register extends Component {
             last_name: "",
             email: "",
             password: "",
+            messages: "",
+            errors: "",
             confirm_password: "",
         }
 
@@ -35,12 +38,17 @@ class Register extends Component {
             password: this.state.password,
             confirm_password: this.state.confirm_password
         }).then(res=>{
-            console.log(res);
-            this.props.history.push('/login')
-        }).catch(err=>console.log(err))
+            this.setState({messages: res.data.msg});
+            notify({message: this.state.messages, variant: 'success'}, ()=>{this.props.history.push('/login')});
+        }).catch(err=>{
+            this.setState({errors: (err.response.data.msg === undefined ? `${err}`: err.response.data.msg)});
+            notify({message: this.state.errors, variant: 'error'});
+            console.log(err)
+        })
     };
 
-    handleClick = () => {
+    handleSubmit = (event) => {
+        event.preventDefault();
         this.sendRegisterInfo();
     };
 
@@ -54,7 +62,7 @@ class Register extends Component {
                 <Typography variant={'headline'} component={'h2'} style={{paddingTop: '3%', textAlign: 'center'}}>
                     Sign Up for Hello Books
                 </Typography>
-                <form noValidate style={{display: 'flex', flexWrap: 'wrap'}}>
+                <form onSubmit={this.handleSubmit} noValidate style={{display: 'flex', flexWrap: 'wrap'}}>
                     <TextField
                         style={inputStyles}
                         required
@@ -109,13 +117,14 @@ class Register extends Component {
                         margin="normal"
                     />
                     <Button
-                        onClick={this.handleClick}
+                        type="submit"
                         variant={'extendedFab'}
                         color={'primary'}
                         style={{margin: '4% auto 0% auto', backgroundColor: 'orange', color: 'black'}}
                     >SIGN UP
                     </Button>
                 </form>
+                <Notifier/>
             </Paper>
         )
     }

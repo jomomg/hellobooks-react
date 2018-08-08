@@ -20,18 +20,18 @@ const BookInfo = (props)=> {
     return(
         <React.Fragment>
             <Grid item xs={4}>
-            <Card style={{width: 320, height: 440}}>
+            <Card style={{width: 320, height: 480}}>
                 <CardMedia
                     style={{height: 0, paddingTop: '90%',}}
                     image="http://placehold.it/300x400"
                     title={`${props.book.title}`}
                 />
-                <CardContent>
+                <CardContent style={{padding: 8}}>
                     <Typography variant={"headline"} component="h2">{props.book.title}</Typography>
                     <Typography component="h2">{props.book.author}</Typography>
                 </CardContent>
                 <CardActions style={{display: 'flex'}} disableActionSpacing>
-                    {Auth.isAuthenticated &&
+                    {(Auth.isAuthenticated() && props.isAvailable()) &&
                     <Button onClick={props.handleClick} aria-label="Borrow this book" style={{backgroundColor: 'orange'}}>
                         Borrow this book
                     </Button>}
@@ -46,7 +46,7 @@ const SideInfo = (props)=> {
     return (
         <React.Fragment>
             <Grid item xs={4}>
-                <Card style={{width: '320px', height: '440px'}}>
+                <Card style={{width: '320px', height: '480px'}}>
                     <CardContent>
                         <Typography variant="headline" component="h2">About this book</Typography>
                         <Divider/>
@@ -59,11 +59,11 @@ const SideInfo = (props)=> {
                         <Divider/><br/>
                         <Chip
                             avatar={
-                                <Avatar style={{color:'white', backgroundColor: props.isAvailable ? '#00C853': 'red'}}>
-                                    {props.isAvailable ? <CheckCircleOutline/> : <ErrorOutline/>}
+                                <Avatar style={{color:'white', backgroundColor: props.isAvailable() ? '#00C853': 'red'}}>
+                                    {props.isAvailable() ? <CheckCircleOutline/> : <ErrorOutline/>}
                                 </Avatar>
                             }
-                            label={props.isAvailable ? 'Available': 'Not Available'}
+                            label={props.isAvailable() ? 'Available': 'Not Available'}
                         />
                     </CardContent>
                 </Card>
@@ -83,15 +83,18 @@ class SingleBookPage extends Component {
    }
     getSingleBook = (bookID) => {
         api.get(`books/${bookID}`)
-            .then(res => {this.setState({book: res.data}); console.log(res.data)})
-            .catch(err => {this.setState({errors: err.response.data}); console.log(this.state.errors)})
+            .then(res => {this.setState({book: res.data})})
+            .catch(err => {
+                this.setState({errors: (!err.response ? `${err}`: err.response.data.msg)});
+                console.log(this.state.errors)
+            })
     };
 
    borrowBook = bookID => () => {
        api.post(`users/books/${bookID}`)
            .then(res => {
-               this.setState({message: res.data.message});
-               notify({message: this.state.message, variant: 'success'});
+               this.setState({message: res.data.msg});
+               notify({message: this.state.message, variant: 'success'}, ()=>{this.props.history.push('/profile')});
            })
            .catch(err => {
                console.log(err);
@@ -112,7 +115,7 @@ class SingleBookPage extends Component {
     render() {
         return(
             <div>
-                <TopNav title={'Book Info'}/>
+                <TopNav title={'Book Info'} {...this.props}/>
                 <div style={{marginLeft: '24%', marginRight: '1%', marginTop: '1%'}}>
                     <Grid container spacing={16}>
                     <BookInfo

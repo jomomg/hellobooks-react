@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Link} from 'react-router-dom';
 import api from '../utils/requests';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -13,7 +13,6 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import AddIcon from '@material-ui/icons/Add';
-import MoreVert from '@material-ui/icons/MoreVert';
 import TopNav from './navbar';
 import DeleteDialog from './dialogs';
 import CreateBook from './create_book';
@@ -44,7 +43,9 @@ const BookItem = (props) => {
         <React.Fragment>
             <TableRow>
                 <TableCell padding={'dense'}>{props.book.id}</TableCell>
-                <TableCell padding={'dense'}>{props.book.title}</TableCell>
+                <TableCell padding={'dense'}>
+                    <Link to={`/books/${props.book.id}`}>{props.book.title}</Link>
+                </TableCell>
                 <TableCell padding={'dense'}>{props.book.author}</TableCell>
                 <TableCell padding={'dense'}>{props.book.publication_year}</TableCell>
                 <TableCell padding={'dense'}>{props.book.publisher}</TableCell>
@@ -58,7 +59,6 @@ const BookItem = (props) => {
                     <Tooltip title='Delete'>
                         <IconButton onClick={props.handleDelete(props.book.id)}><DeleteIcon color={'error'}/></IconButton>
                     </Tooltip>
-                    <Tooltip title='More'><IconButton onClick={props.handleMore}><MoreVert/></IconButton></Tooltip>
                 </TableCell>
             </TableRow>
         </React.Fragment>
@@ -159,7 +159,7 @@ class AdminPage extends Component {
     render() {
         return (
             <div>
-                <TopNav title={'Admin Dashboard'}/>
+                <TopNav title={'Admin Dashboard'} {...this.props}/>
                 <div style={{marginTop: '3%'}}>
                 <Paper style={{width: '90%', margin: 'auto', overflowX: 'auto'}}>
                     <Table>

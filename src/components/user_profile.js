@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography'
 import api from '../utils/requests'
 import TopNav from './navbar';
 import Auth from '../utils/authentication';
+import {Link} from 'react-router-dom';
 
 const UserAvatar = ()=> {
     const { first_name, last_name, email } = Auth.getUserInfo();
@@ -41,7 +42,9 @@ const UnReturnedBooks = (props)=> {
     <React.Fragment>
         <TableRow>
             <TableCell padding={'dense'}>{props.book.id}</TableCell>
-            <TableCell padding={'dense'}>{props.book.title}</TableCell>
+            <TableCell padding={'dense'}>
+                <Link to={`/books/${props.book.id}`}>{props.book.title}</Link>
+            </TableCell>
             <TableCell padding={'dense'}>{props.book.author}</TableCell>
             <TableCell padding={'dense'}>
                 <Button onClick={() => props.handleClick(props.book.id)}
@@ -85,8 +88,8 @@ class UserProfilePage extends Component {
         api.get('users/books?returned=false')
             .then(res => {this.setState({unReturnedBooks: res.data}); console.log(res)})
             .catch(err => {
-                console.log(err);
-                this.setState({unReturned: []})
+                console.log(`${err}`);
+                this.setState({errors: `${err}`})
             })
     };
 
@@ -105,7 +108,7 @@ class UserProfilePage extends Component {
     render () {
         return (
             <div>
-            <TopNav title={'My Profile'}/>
+            <TopNav title={'My Profile'} {...this.props}/>
                 <div style={{margin: '5%'}}>
                 <UserAvatar/>
                 </div>

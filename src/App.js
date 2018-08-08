@@ -9,12 +9,13 @@ import UserProfilePage from './components/user_profile'
 import SingleBookPage from './components/single_book'
 import AdminPage from './components/admin'
 import EditBook from './components/edit_book'
+import NotFound from './components/NotFound'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
         render={props =>
-            Auth.isAuthenticated ? (
+            Auth.isAuthenticated() ? (
                 <Component {...props} />
             ) : (
                 <Redirect
@@ -41,6 +42,7 @@ class App extends Component {
                  <PrivateRoute path="/admin" component={AdminPage}/>
                  <PrivateRoute path="/profile" component={UserProfilePage}/>
                  <PrivateRoute path="/edit/:id" component={EditBook}/>
+                 <Route component={NotFound}/>
              </Switch>
          </React.Fragment>
      )

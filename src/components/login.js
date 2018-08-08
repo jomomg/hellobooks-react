@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import api from "../utils/requests";
 import Auth from '../utils/authentication';
 import { Redirect } from 'react-router-dom';
+import Notifier, { notify } from "./notifier";
 
 const login_url = '/auth/login';
 const inputStyles = {
@@ -20,33 +21,30 @@ class Login extends Component {
         this.state = {
             email: "",
             password: "",
+            errors: "",
             redirectToReferrer: false
         }
 
     }
 
-    sendLoginInfo = async() => {
-        try {
-            const response = await api.post(login_url, {
-                email: this.state.email,
-                password: this.state.password,
-            });
-            console.log(response);
-            if (response.status === 200) {
-                Auth.authenticate();
-                const accessToken = response.data.access_token;
+    Login = ()=> {
+        api.post(login_url, {email: this.state.email, password: this.state.password})
+            .then(res => {
+                let accessToken = res.data.access_token;
                 localStorage.setItem('accessToken', accessToken);
+                Auth.authenticate();
                 this.setState({redirectToReferrer: true});
-            } else {
-
-            }
-        } catch (e) {
-            console.log(e)
-        }
+            })
+            .catch(err => {
+                this.setState({errors: (err.response.data.msg === undefined ? `${err}`: err.response.data.msg)});
+                notify({message: this.state.errors, variant: 'error'});
+                console.log(err)
+            })
     };
 
-    handleClick = () => {
-        this.sendLoginInfo();
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.Login();
     };
 
     handleChange = name => (event) => {
@@ -66,7 +64,7 @@ class Login extends Component {
                 <Typography variant={'headline'} component={'h2'} style={{paddingTop: '3%', textAlign: 'center'}}>
                     Login to Hello Books
                 </Typography>
-            <form style={{display: 'flex', flexWrap: 'wrap'}}>
+            <form onSubmit={this.handleSubmit} noValidate style={{display: 'flex', flexWrap: 'wrap'}}>
                 <TextField
                     style={inputStyles}
                     type={'email'}
@@ -88,13 +86,14 @@ class Login extends Component {
                     margin="normal"
                 />
                 <Button
-                    onClick={this.handleClick}
+                    type="submit"
                     variant={'extendedFab'}
                     color={'primary'}
                     style={{margin: '4% auto 0% auto', backgroundColor: 'orange', color: 'black'}}
                 >LOGIN
                 </Button>
             </form>
+                <Notifier/>
             </Paper>
         )
     }

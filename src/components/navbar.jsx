@@ -7,11 +7,10 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import {Route, withRouter} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import Auth from '../utils/authentication';
 import api from '../utils/requests';
-
-
+import {Link} from 'react-router-dom';
 
 class TopNav extends Component {
     constructor(props) {
@@ -19,7 +18,7 @@ class TopNav extends Component {
         this.state = {
             anchorEl: null,
         }
-    }
+    };
 
     handleMenu = event => {
         this.setState({ anchorEl: event.currentTarget });
@@ -33,9 +32,13 @@ class TopNav extends Component {
         this.setState({ anchorEl: null });
         Auth.logout();
         api.post('auth/logout')
-            .then(res => console.log(res))
-            .catch(err => console.log(err.response.data))
-            .then(()=>{this.props.history.push('/')})
+            .then(() => {
+                this.props.history.push('/');
+            })
+            .catch(err => {
+                console.log(`${err}`);
+                this.props.history.push('/');
+            })
     };
 
     render() {
@@ -46,15 +49,22 @@ class TopNav extends Component {
             <div>
                 <AppBar style={{backgroundColor: 'teal'}} position="static">
                     <Toolbar>
-                        <Typography variant="title" color="inherit" style={{flexGrow: 1}}>
+                        <Typography  color="inherit" style={{flexGrow: 1}}>
+                            <Link style={{color: 'white'}} to={'/'}>{"Home"}</Link>
+                            <Link style={{marginLeft: 5, color: 'white'}} to={'/books'}>{"Books"}</Link>
+                        </Typography>
+                        <Typography id="nav-title" variant="title" color="inherit" style={{flexGrow: 1}}>
                             {this.props.title}
                         </Typography>
                             <div>
-                                {!Auth.isAuthenticated ?
+                                {!Auth.isAuthenticated() ?
                                     <Route render={({ history }) => (
                                         <Button onClick={()=>{history.push('/login')}} color="inherit">Login</Button>
                                     )} /> :
                                 <React.Fragment>
+                                    <span style={{fontFamily: "helvetica", margin: 0}}>
+                                        {Auth.getUserInfo().email}
+                                    </span>
                                 <IconButton
                                     aria-owns={open ? 'menu-appbar' : null}
                                     aria-haspopup="true"
@@ -101,5 +111,4 @@ class TopNav extends Component {
     }
 }
 
-export default withRouter(TopNav);
-
+export default TopNav;

@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BookPage/> it renders successfully 1`] = `
+<div>
+  <TopNav
+    title="Admin Dashboard"
+  />
+  <div
+    style={
+      Object {
+        "marginTop": "3%",
+      }
+    }
+  >
+    <WithStyles(Paper)
+      style={
+        Object {
+          "margin": "auto",
+          "overflowX": "auto",
+          "width": "90%",
+        }
+      }
+    >
+      <WithStyles(Table)>
+        <WithStyles(TableHead)>
+          <WithStyles(TableRow)>
+            <WithStyles(TableCell)
+              padding="dense"
+            >
+              Book ID
+            </WithStyles(TableCell)>
+            <WithStyles(TableCell)>
+              Title
+            </WithStyles(TableCell)>
+            <WithStyles(TableCell)>
+              Author
+            </WithStyles(TableCell)>
+            <WithStyles(TableCell)>
+              Year
+            </WithStyles(TableCell)>
+            <WithStyles(TableCell)>
+              Publisher
+            </WithStyles(TableCell)>
+            <WithStyles(TableCell)>
+              Genre
+            </WithStyles(TableCell)>
+            <WithStyles(TableCell)>
+              Actions
+            </WithStyles(TableCell)>
+          </WithStyles(TableRow)>
+        </WithStyles(TableHead)>
+        <WithStyles(TableBody) />
+      </WithStyles(Table)>
+    </WithStyles(Paper)>
+    <DeleteDialog
+      handleClose={[Function]}
+      handleNo={[Function]}
+      handleYes={[Function]}
+      open={false}
+    />
+    <CreateBook
+      author=""
+      category=""
+      description=""
+      edition=""
+      handleAddClick={[Function]}
+      handleChange={[Function]}
+      handleClose={[Function]}
+      isbn=""
+      open={false}
+      publication_year=""
+      publisher=""
+      subcategory=""
+      title=""
+    />
+  </div>
+  <FloatingAddButton
+    handleClick={[Function]}
+  />
+</div>
+`;

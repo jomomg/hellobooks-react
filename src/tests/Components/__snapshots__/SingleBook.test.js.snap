@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SingleBookPage/> it renders successfully 1`] = `
+<div>
+  <TopNav
+    match={
+      Object {
+        "params": Object {
+          "id": 1,
+        },
+      }
+    }
+    title="Book Info"
+  />
+  <div
+    style={
+      Object {
+        "marginLeft": "24%",
+        "marginRight": "1%",
+        "marginTop": "1%",
+      }
+    }
+  >
+    <WithStyles(Grid)
+      container={true}
+      spacing={16}
+    >
+      <BookInfo
+        book={Object {}}
+        handleClick={[Function]}
+        isAvailable={[Function]}
+      />
+      <SideInfo
+        book={Object {}}
+        isAvailable={[Function]}
+      />
+      <Notifier />
+    </WithStyles(Grid)>
+  </div>
+</div>
+`;

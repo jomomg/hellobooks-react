@@ -30,7 +30,7 @@ const fabStyles = {
 
 /**
  * Add book button fixed at the bottom of the code
- * @param {obj} props 
+ * @param {object} props
  */
 const FloatingAddButton = (props) => {
     return (
@@ -45,7 +45,7 @@ const FloatingAddButton = (props) => {
 /**
  * Renders an individual row in the all books table.
  * It also renders buttons for editing and deleting a book
- * @param {obj} props 
+ * @param {object} props
  */
 const BookItem = (props) => {
     return (
@@ -93,7 +93,9 @@ class AdminPage extends Component {
             isbn: "",
             category: "",
             subcategory: "",
-            description: ""
+            description: "",
+            messages: "",
+            errors: "",
         };
     }
 
@@ -103,32 +105,45 @@ class AdminPage extends Component {
 
     // Get all the books in the database
     getBooks = () => {
-        api.get(books_url)
+        api({
+            method: "get",
+            url: books_url,
+            headers: { Authorization: "Bearer" + localStorage.getItem("accessToken") }
+        })
             .then(res => { this.setState({ books: res.data }); })
-            .catch(err => { console.log(err.response.data); });
+            .catch(err => { console.log(err.response.data); })
     };
 
     // POST the data entered in the form
     sendBookInfo = () => {
-        api.post("books", {
-            title: this.state.title,
-            author: this.state.author,
-            publisher: this.state.publisher,
-            publication_year: this.state.publication_year,
-            edition: this.state.edition,
-            isbn: this.state.isbn,
-            category: this.state.category,
-            subcategory: this.state.subcategory,
-            description: this.state.description
-        }).then(res => {
-            console.log(res);
-        }).catch(err => console.log(err.response.data));
+        api({
+            method: "post",
+            url: "books",
+            headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` },
+            data: {
+                title: this.state.title,
+                author: this.state.author,
+                publisher: this.state.publisher,
+                publication_year: this.state.publication_year,
+                edition: this.state.edition,
+                isbn: this.state.isbn,
+                category: this.state.category,
+                subcategory: this.state.subcategory,
+                description: this.state.description
+            }
+        })
+            .then(res => this.setState({messages: res.data.msg}))
+            .catch(err => this.setState({messages: err.response.data.msg}));
     };
 
     // Send DELETE request to the api
     deleteBook = (bookID) => {
-        api.delete(`books/${bookID}`)
-            .then(res => { console.log(res.data); })
+        api({
+            method: 'delete',
+            url: `books/${bookID}`,
+            headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
+        })
+            .then(res => { this.setState({ messages: res.data.msg }) })
             .catch(err => { console.log(err.data); })
             .then(() => { this.getBooks(); });
     };

@@ -1,15 +1,15 @@
-import React from 'react';
-import NotFound from '../../components/NotFound';
-import { shallow, mount} from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
+import React from "react";
+import NotFound from "../../components/NotFound";
+import { shallow, mount} from "enzyme";
+import { shallowToJson } from "enzyme-to-json";
 
-describe('<NotFound/>', ()=>{
-    test('it renders successfully', ()=>{
+describe("<NotFound/>", ()=>{
+    test("it renders successfully", ()=>{
         const notFound = shallow(<NotFound/>);
-        expect(shallowToJson(notFound)).toMatchSnapshot()
+        expect(shallowToJson(notFound)).toMatchSnapshot();
     });
-    test('it redirects to home', ()=>{
+    test("it redirects to home", ()=>{
         const notFound = shallow(<NotFound/>);
         expect(notFound).toExist();
-    })
+    });
 });

@@ -12,7 +12,10 @@ const inputStyles = {
     width: "400px"
 };
 
-
+/** 
+ *Component for editing a book. 
+ *It renders a form 
+ */
 class EditBook extends React.Component {
     constructor(props) {
         super(props);
@@ -29,6 +32,7 @@ class EditBook extends React.Component {
         };
     }
 
+    /* event handlers */
     handleChange = name => (event) => {
         this.setState({ [name]: event.target.value });
     };
@@ -38,6 +42,7 @@ class EditBook extends React.Component {
         this.editBook(bookID);
     };
 
+    // Method for sending put request to the api
     editBook = (bookID) => {
         console.log(this.state);
         api.put(`books/${bookID}`, this.state)
@@ -47,6 +52,7 @@ class EditBook extends React.Component {
             .catch(err => console.log(err.response.data.msg));
     };
 
+    // Retrieves information about the book specified by the bookID
     retrieveBook = (bookID) => {
         api.get(`books/${bookID}`)
             .then(res => {
@@ -119,7 +125,6 @@ class EditBook extends React.Component {
                     />
                     <TextField
                         style={inputStyles}
-                        type='submit'
                         id="edition"
                         label="Edition"
                         placeholder={this.state.edition}

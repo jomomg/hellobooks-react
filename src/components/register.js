@@ -15,6 +15,9 @@ const inputStyles = {
     width: "400px"
 };
 
+/**
+ * Component for registering a user. Renders a form
+ */
 class Register extends Component {
     constructor(props) {
         super(props);
@@ -30,6 +33,7 @@ class Register extends Component {
 
     }
 
+    /* Send the registration info to the api */
     sendRegisterInfo = () => {
         api.post(register_url, {
             first_name: this.state.first_name,

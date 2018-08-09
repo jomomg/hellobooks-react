@@ -11,6 +11,12 @@ import AdminPage from "./components/admin";
 import EditBook from "./components/edit_book";
 import NotFound from "./components/NotFound";
 
+/**
+ * A route component that checks whether a user is 
+ * authenticated. If not they are redirected to login
+ * page.
+ * @param {obj} component, props 
+ */
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
@@ -29,6 +35,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     />
 );
 
+/**
+ * Main app component
+ */
 class App extends Component {
     render() {
         return (

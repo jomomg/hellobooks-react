@@ -17,6 +17,7 @@ const variantIcon = {
     info: InfoIcon,
 };
 
+/* styles for the various types of message */
 const styles = {
     success: {
         backgroundColor: green[600],
@@ -43,7 +44,12 @@ const styles = {
     },
 };
 
-const SnackbarContentWrapper = (props)=> {
+/**
+ * Renders the message that will be displayed by 
+ * the Notifier component
+ * @param {*} props 
+ */
+const SnackbarContentWrapper = (props) => {
     const { message, onClose, variant, ...other } = props;
     const Icon = variantIcon[variant];
 
@@ -53,7 +59,7 @@ const SnackbarContentWrapper = (props)=> {
             message={
                 <span id="client-snackbar" style={styles.message}>
                     <Icon
-                        style={{...styles.icon, ...styles.iconVariant}}
+                        style={{ ...styles.icon, ...styles.iconVariant }}
                     />
                     {message}
                 </span>
@@ -65,7 +71,7 @@ const SnackbarContentWrapper = (props)=> {
                     color="inherit"
                     onClick={onClose}
                 >
-                    <CloseIcon  />
+                    <CloseIcon />
                 </IconButton>,
             ]}
             {...other}
@@ -74,8 +80,15 @@ const SnackbarContentWrapper = (props)=> {
 };
 
 let notifyFn;
-const pass = ()=>{};
 
+// noop function
+const pass = () => { };
+
+/**
+ * Notification component. Renders a snackbar. There are 
+ * four types that can be rendered: error, success, warning and info.
+ * Each has a different color
+ */
 class Notifier extends React.Component {
     constructor(props) {
         super(props);
@@ -87,12 +100,12 @@ class Notifier extends React.Component {
         };
     }
 
-    notify = ({message, variant}, cb) => {
+    notify = ({ message, variant }, cb) => {
         this.setState({
             open: true,
             message,
             variant,
-            callback: (cb===undefined ? pass : cb),
+            callback: (cb === undefined ? pass : cb),
         });
     };
 
@@ -132,8 +145,16 @@ class Notifier extends React.Component {
     }
 }
 
-export function notify({message, variant}, cb) {
-    notifyFn({message, variant}, cb);
+/**
+ * Function for serving a notification. 
+ * Takes a message and type e.g error. 
+ * Also takes an optional callback that is 
+ * called after notification finishes 
+ * @param {object} {message, variant} 
+ * @param {callback} cb 
+ */
+export function notify({ message, variant }, cb) {
+    notifyFn({ message, variant }, cb);
 }
 
 export default Notifier;

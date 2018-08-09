@@ -7,6 +7,10 @@ const buttonStyle = {
     marginLeft: "3px"
 };
 
+/**
+ * Main landing page. This is the page the user encouters 
+ * when they visit the site.
+ */
 const LandingPage = () => {
     return (
         <React.Fragment>

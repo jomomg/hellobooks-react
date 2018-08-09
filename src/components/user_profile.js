@@ -15,6 +15,9 @@ import TopNav from "./navbar";
 import Auth from "../utils/authentication";
 import {Link} from "react-router-dom";
 
+/**
+ * Renders a user avatar with the users names and email
+ */
 const UserAvatar = ()=> {
     const { first_name, last_name, email } = Auth.getUserInfo();
     return (
@@ -37,6 +40,11 @@ const UserAvatar = ()=> {
     );
 };
 
+/**
+ * Renders a table row with information about an unreturned book, 
+ * as well as a button for returning the book
+ * @param {*} props 
+ */
 const UnReturnedBooks = (props)=> {
     return (
         <React.Fragment>
@@ -57,6 +65,10 @@ const UnReturnedBooks = (props)=> {
     );
 };
 
+/**
+ * Render a table row with a users borrowing history
+ * @param {*} props 
+ */
 const BorrowingHistory = (props)=>{
     return (
         <React.Fragment>
@@ -70,6 +82,10 @@ const BorrowingHistory = (props)=>{
     );
 };
 
+/**
+ * Renders the main profile page. Contains tables for unreturned books 
+ * and borrowing history
+ */
 class UserProfilePage extends Component {
     state = {
         borrowingHistory: [],
@@ -78,12 +94,14 @@ class UserProfilePage extends Component {
         errors: ""
     };
 
+    // Get all the books the user has borrowed
     getBorrowingHistory = () => {
         api.get("users/books")
             .then(res => { this.setState({borrowingHistory: res.data}); console.log(res.data); })
             .catch(err => { console.log(err.response);});
     };
 
+    // Get the books yet to be returned by the user
     getUnReturnedBooks = ()=> {
         api.get("users/books?returned=false")
             .then(res => {this.setState({unReturnedBooks: res.data}); console.log(res);})
@@ -93,6 +111,7 @@ class UserProfilePage extends Component {
             });
     };
 
+    // This method makes the return book api call
     returnBook = (bookID)=> {
         api.put(`users/books/${bookID}`)
             .then(() => {this.getUnReturnedBooks();})

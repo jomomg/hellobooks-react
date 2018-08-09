@@ -11,6 +11,10 @@ const inputStyles = {
     width: "400px"
 };
 
+/**
+ * Component for adding a new book to the library.
+ * @param {object} props 
+ */
 const CreateBook = (props) => {
     return (
         <Dialog

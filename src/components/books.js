@@ -14,6 +14,11 @@ import TopNav from "./navbar";
 
 const books_url = "books";
 
+/**
+ * Component for displaying book cover image, 
+ * title and author information
+ * @param {obj} props 
+ */
 const BookCard = (props) => {
     return (
         <React.Fragment>
@@ -51,6 +56,11 @@ const BookCard = (props) => {
     );
 };
 
+
+/** 
+ *Renders the All books page. It renders the 
+ *book card components in a Nx4 grid 
+ */
 class BookPage extends React.Component {
     constructor(props) {
         super(props);
@@ -65,6 +75,7 @@ class BookPage extends React.Component {
         this.getBooks();
     }
 
+    // Get all the books in the database
     getBooks = () => {
         this.setState({ loading: true });
         api.get(books_url)

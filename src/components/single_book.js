@@ -16,6 +16,11 @@ import TopNav from "./navbar";
 import Auth from "../utils/authentication";
 import Notifier, { notify } from "./notifier";
 
+/**
+ * Material UI card that contains book title, 
+ * author and a button for borrowing a book
+ * @param {object} props 
+ */
 const BookInfo = (props)=> {
     return(
         <React.Fragment>
@@ -42,6 +47,10 @@ const BookInfo = (props)=> {
     );
 };
 
+/**
+ * Contains more book information like genre and description
+ * @param {*} props 
+ */
 const SideInfo = (props)=> {
     return (
         <React.Fragment>
@@ -72,6 +81,10 @@ const SideInfo = (props)=> {
     );
 };
 
+/**
+ * Renders the main page. Arranges the BookInfo and 
+ * SideInfo components into a grid 
+ */
 class SingleBookPage extends Component {
     constructor(props) {
         super(props);
@@ -81,6 +94,8 @@ class SingleBookPage extends Component {
             message: "",
         };
     }
+
+    // Get the book information using the books ID
     getSingleBook = (bookID) => {
         api.get(`books/${bookID}`)
             .then(res => {this.setState({book: res.data});})
@@ -90,6 +105,7 @@ class SingleBookPage extends Component {
             });
     };
 
+    // Method for borrowing a book
    borrowBook = bookID => () => {
        api.post(`users/books/${bookID}`)
            .then(res => {
@@ -103,7 +119,7 @@ class SingleBookPage extends Component {
            });
    };
 
-
+   // checks if a book is available
    isAvailable = () => {
        return this.state.book.available >= 1;
    };

@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {Route, Link} from "react-router-dom";
+import React, { Component } from "react";
+import { Route, Link } from "react-router-dom";
 import api from "../utils/requests";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -28,6 +28,10 @@ const fabStyles = {
     backgroundColor: "#00C853", color: "white"
 };
 
+/**
+ * Add book button fixed at the bottom of the code
+ * @param {obj} props 
+ */
 const FloatingAddButton = (props) => {
     return (
         <div>
@@ -38,6 +42,11 @@ const FloatingAddButton = (props) => {
     );
 };
 
+/**
+ * Renders an individual row in the all books table.
+ * It also renders buttons for editing and deleting a book
+ * @param {obj} props 
+ */
 const BookItem = (props) => {
     return (
         <React.Fragment>
@@ -53,11 +62,11 @@ const BookItem = (props) => {
                 <TableCell padding={"none"}>
                     <Tooltip title='Edit'>
                         <Route render={({ history }) => (
-                            <IconButton onClick={()=>history.push(`/edit/${props.book.id}`)}><EditIcon/></IconButton>
-                        )}/>
+                            <IconButton onClick={() => history.push(`/edit/${props.book.id}`)}><EditIcon /></IconButton>
+                        )} />
                     </Tooltip>
                     <Tooltip title='Delete'>
-                        <IconButton onClick={props.handleDelete(props.book.id)}><DeleteIcon color={"error"}/></IconButton>
+                        <IconButton onClick={props.handleDelete(props.book.id)}><DeleteIcon color={"error"} /></IconButton>
                     </Tooltip>
                 </TableCell>
             </TableRow>
@@ -65,14 +74,17 @@ const BookItem = (props) => {
     );
 };
 
-
+/** 
+ * The main admin page. Contains methods for 
+ * adding books, deleting and editing a book 
+ */
 class AdminPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             books: [],
-            dialogOpenDelete: false,
-            dialogOpenAdd: false,
+            dialogOpenDelete: false, // trigger for delete dialog
+            dialogOpenAdd: false, // trigger for add dialog
             title: "",
             author: "",
             publisher: "",
@@ -89,13 +101,15 @@ class AdminPage extends Component {
         this.getBooks();
     }
 
-    getBooks = ()=> {
+    // Get all the books in the database
+    getBooks = () => {
         api.get(books_url)
-            .then(res => {this.setState({books: res.data});})
-            .catch(err => {console.log(err.response.data);});
+            .then(res => { this.setState({ books: res.data }); })
+            .catch(err => { console.log(err.response.data); });
     };
 
-    sendBookInfo = ()=> {
+    // POST the data entered in the form
+    sendBookInfo = () => {
         api.post("books", {
             title: this.state.title,
             author: this.state.author,
@@ -106,62 +120,64 @@ class AdminPage extends Component {
             category: this.state.category,
             subcategory: this.state.subcategory,
             description: this.state.description
-        }).then(res=>{
+        }).then(res => {
             console.log(res);
-        }).catch(err=>console.log(err.response.data));
+        }).catch(err => console.log(err.response.data));
     };
 
-    deleteBook = (bookID)=> {
+    // Send DELETE request to the api
+    deleteBook = (bookID) => {
         api.delete(`books/${bookID}`)
-            .then(res=>{console.log(res.data);})
-            .catch(err=>{console.log(err.data);})
-            .then(() => {this.getBooks();});
+            .then(res => { console.log(res.data); })
+            .catch(err => { console.log(err.data); })
+            .then(() => { this.getBooks(); });
     };
 
-    handleDeleteClick = (e)=> {
+    /* Event handlers */
+    handleDeleteClick = (e) => {
         e.preventDefault();
         this.deleteBook(current_book_id);
-        this.setState({dialogOpenDelete: false});
+        this.setState({ dialogOpenDelete: false });
     };
 
-    handleOpenDialogDelete = bookID => (event)=> {
+    handleOpenDialogDelete = bookID => (event) => {
         event.preventDefault();
         current_book_id = bookID;
-        this.setState({dialogOpenDelete: true});
+        this.setState({ dialogOpenDelete: true });
     };
 
-    handleOpenDialogAdd = (e)=> {
+    handleOpenDialogAdd = (e) => {
         e.preventDefault();
-        this.setState({dialogOpenAdd: true});
+        this.setState({ dialogOpenAdd: true });
     };
 
-    handleAddClick = (e)=> {
+    handleAddClick = (e) => {
         e.preventDefault();
         this.sendBookInfo();
-        this.setState({dialogOpenAdd: false});
+        this.setState({ dialogOpenAdd: false });
         this.getBooks();
     };
 
-    handleCloseDelete = ()=> {
-        this.setState({dialogOpenDelete: false});
+    handleCloseDelete = () => {
+        this.setState({ dialogOpenDelete: false });
         this.getBooks();
     };
 
-    handleCloseAdd = ()=> {
-        this.setState({dialogOpenAdd: false});
+    handleCloseAdd = () => {
+        this.setState({ dialogOpenAdd: false });
         this.getBooks();
     };
 
     handleChange = name => (event) => {
-        this.setState({[name]: event.target.value});
+        this.setState({ [name]: event.target.value });
     };
 
     render() {
         return (
             <div>
-                <TopNav title={"Admin Dashboard"} {...this.props}/>
-                <div style={{marginTop: "3%"}}>
-                    <Paper style={{width: "90%", margin: "auto", overflowX: "auto"}}>
+                <TopNav title={"Admin Dashboard"} {...this.props} />
+                <div style={{ marginTop: "3%" }}>
+                    <Paper style={{ width: "90%", margin: "auto", overflowX: "auto" }}>
                         <Table>
                             <TableHead>
                                 <TableRow>
@@ -180,7 +196,7 @@ class AdminPage extends Component {
                                         <BookItem
                                             book={book}
                                             handleDelete={this.handleOpenDialogDelete}
-                                            key={book.id}/>
+                                            key={book.id} />
                                     );
                                 })}
                             </TableBody>
@@ -208,7 +224,7 @@ class AdminPage extends Component {
                         description={this.state.description}
                     />
                 </div>
-                <FloatingAddButton handleClick={this.handleOpenDialogAdd}/>
+                <FloatingAddButton handleClick={this.handleOpenDialogAdd} />
             </div>
         );
     }

@@ -15,6 +15,9 @@ const inputStyles = {
     width: "400px"
 };
 
+/** 
+ * Component for logging in a user. It renders a login form 
+ */
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -27,6 +30,7 @@ class Login extends Component {
 
     }
 
+    // method for posting the entered login data
     Login = ()=> {
         api.post(login_url, {email: this.state.email, password: this.state.password})
             .then(res => {
@@ -42,6 +46,7 @@ class Login extends Component {
             });
     };
 
+    /* event handlers */
     handleSubmit = (event) => {
         event.preventDefault();
         this.Login();

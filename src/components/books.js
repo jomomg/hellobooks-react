@@ -80,10 +80,7 @@ class BookPage extends React.Component {
         this.setState({ loading: true });
         api.get(books_url)
             .then(res => this.setState({ books: res.data, loading: false }))
-            .catch(err => {
-                console.log("error: ", err);
-                this.setState({ error: `${err}`, loading: false });
-            });
+            .catch(err => this.setState({ error: `${err}`, loading: false }));
     };
 
     render() {

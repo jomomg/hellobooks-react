@@ -83,6 +83,8 @@ class AdminPage extends Component {
         super(props);
         this.state = {
             books: [],
+            errors: "",
+            messages: "",
             dialogOpenDelete: false, // trigger for delete dialog
             dialogOpenAdd: false, // trigger for add dialog
             title: "",
@@ -94,8 +96,6 @@ class AdminPage extends Component {
             category: "",
             subcategory: "",
             description: "",
-            messages: "",
-            errors: "",
         };
     }
 
@@ -111,40 +111,34 @@ class AdminPage extends Component {
             headers: { Authorization: "Bearer" + localStorage.getItem("accessToken") }
         })
             .then(res => { this.setState({ books: res.data }); })
-            .catch(err => { console.log(err.response.data); })
+            .catch(err => { this.setState({errors: err.response.data.msg}); });
     };
 
     // POST the data entered in the form
     sendBookInfo = () => {
-        api({
-            method: "post",
-            url: "books",
-            headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` },
-            data: {
-                title: this.state.title,
-                author: this.state.author,
-                publisher: this.state.publisher,
-                publication_year: this.state.publication_year,
-                edition: this.state.edition,
-                isbn: this.state.isbn,
-                category: this.state.category,
-                subcategory: this.state.subcategory,
-                description: this.state.description
-            }
-        })
-            .then(res => this.setState({messages: res.data.msg}))
-            .catch(err => this.setState({messages: err.response.data.msg}));
+        api.post("books", {
+            title: this.state.title,
+            author: this.state.author,
+            publisher: this.state.publisher,
+            publication_year: this.state.publication_year,
+            edition: this.state.edition,
+            isbn: this.state.isbn,
+            category: this.state.category,
+            subcategory: this.state.subcategory,
+            description: this.state.description
+        }).then(res => {this.setState({ messages: res.data.msg });
+        }).catch(err => this.setState({ errors: err.response.data.msg }));
     };
 
     // Send DELETE request to the api
     deleteBook = (bookID) => {
         api({
-            method: 'delete',
+            method: "delete", 
             url: `books/${bookID}`,
             headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
         })
-            .then(res => { this.setState({ messages: res.data.msg }) })
-            .catch(err => { console.log(err.data); })
+            .then(res => { this.setState({ messages: res.data.msg }); })
+            .catch(err => { this.setState({errors: err.data.msg}); })
             .then(() => { this.getBooks(); });
     };
 

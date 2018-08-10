@@ -101,8 +101,8 @@ class UserProfilePage extends Component {
             url: "users/books",
             headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
         })
-            .then(res => { this.setState({borrowingHistory: res.data}); console.log(res.data); })
-            .catch(err => { console.log(err.response);});
+            .then(res => { this.setState({borrowingHistory: res.data}); })
+            .catch(err => this.setState({ errors: err.response.data.msg }));
     };
 
     // Get the books yet to be returned by the user
@@ -112,11 +112,8 @@ class UserProfilePage extends Component {
             url: "users/books?returned=false",
             headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
         })
-            .then(res => {this.setState({unReturnedBooks: res.data}); console.log(res);})
-            .catch(err => {
-                console.log(`${err}`);
-                this.setState({errors: `${err}`});
-            });
+            .then(res => this.setState({unReturnedBooks: res.data}))
+            .catch(err => this.setState({errors: `${err}`}));
     };
 
     // This method makes the return book api call
@@ -127,7 +124,7 @@ class UserProfilePage extends Component {
             headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
         })
             .then(() => {this.getUnReturnedBooks();})
-            .catch(err => {console.log(err);})
+            .catch(err => this.setState({errors: `${err}`}))
             .then(() => {this.getBorrowingHistory();});
     };
 

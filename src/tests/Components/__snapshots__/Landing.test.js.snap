@@ -32,45 +32,26 @@ exports[`<LandingPage/> it renders successfully 1`] = `
       >
         Hello Books
       </p>
-      <a
-        className="btn-flat orange"
-        href="/login"
+      <Route
+        render={[Function]}
+      />
+      <Route
+        render={[Function]}
+      />
+      <span
         style={
           Object {
-            "marginLeft": "3px",
-            "marginRight": "3px",
+            "color": "white",
+            "fontFamily": "Courier New",
+            "fontStyle": "bold",
           }
         }
       >
-        SIGN IN
-      </a>
-      <a
-        className="btn-flat orange"
-        href="/register"
-        style={
-          Object {
-            "marginLeft": "3px",
-            "marginRight": "3px",
-          }
-        }
-      >
-        SIGN UP
-      </a>
-      <span>
         or
       </span>
-      <a
-        className="btn-flat orange"
-        href="/books"
-        style={
-          Object {
-            "marginLeft": "3px",
-            "marginRight": "3px",
-          }
-        }
-      >
-        SEE ALL OUR BOOKS
-      </a>
+      <Route
+        render={[Function]}
+      />
     </div>
   </div>
   <footer

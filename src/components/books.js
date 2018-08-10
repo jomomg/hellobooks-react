@@ -17,7 +17,7 @@ const books_url = "books";
 /**
  * Component for displaying book cover image, 
  * title and author information
- * @param {obj} props 
+ * @param {object} props
  */
 const BookCard = (props) => {
     return (
@@ -26,7 +26,7 @@ const BookCard = (props) => {
                 <Card style={{ maxWidth: 200, maxHeight: 370 }}>
                     <CardMedia
                         style={{ height: 200, }}
-                        image="http://placehold.it/100x200"
+                        image={`http://via.placeholder.com/200x300/003da0?text=${props.title.split(" ").join("+")}`}
                         title="Book Cover"
                     />
                     <CardContent style={{ padding: 8 }}>

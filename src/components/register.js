@@ -35,12 +35,17 @@ class Register extends Component {
 
     /* Send the registration info to the api */
     sendRegisterInfo = () => {
-        api.post(register_url, {
-            first_name: this.state.first_name,
-            last_name: this.state.last_name,
-            email: this.state.email,
-            password: this.state.password,
-            confirm_password: this.state.confirm_password
+        api({
+            method: "post",
+            url: register_url,
+            headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` },
+            data: {
+                first_name: this.state.first_name,
+                last_name: this.state.last_name,
+                email: this.state.email,
+                password: this.state.password,
+                confirm_password: this.state.confirm_password
+            }
         }).then(res=>{
             this.setState({messages: res.data.msg});
             notify({message: this.state.messages, variant: "success"}, ()=>{this.props.history.push("/login");});

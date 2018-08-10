@@ -32,7 +32,15 @@ class Login extends Component {
 
     // method for posting the entered login data
     Login = ()=> {
-        api.post(login_url, {email: this.state.email, password: this.state.password})
+        api({
+            method: "post",
+            url: login_url,
+            data: {
+                email: this.state.email,
+                password: this.state.password
+            },
+            headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
+        })
             .then(res => {
                 let accessToken = res.data.access_token;
                 localStorage.setItem("accessToken", accessToken);

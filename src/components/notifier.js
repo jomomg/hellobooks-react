@@ -130,7 +130,7 @@ class Notifier extends React.Component {
                         horizontal: "center",
                     }}
                     open={this.state.open}
-                    autoHideDuration={6000}
+                    autoHideDuration={1000}
                     onClose={this.handleClose}
                 >
                     <SnackbarContentWrapper
@@ -149,9 +149,7 @@ class Notifier extends React.Component {
  * Function for serving a notification. 
  * Takes a message and type e.g error. 
  * Also takes an optional callback that is 
- * called after notification finishes 
- * @param {object} {message, variant} 
- * @param {callback} cb 
+ * called after notification finishes
  */
 export function notify({ message, variant }, cb) {
     notifyFn({ message, variant }, cb);

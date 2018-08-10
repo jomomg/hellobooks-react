@@ -44,17 +44,30 @@ class EditBook extends React.Component {
 
     // Method for sending put request to the api
     editBook = (bookID) => {
-        console.log(this.state);
-        api.put(`books/${bookID}`, this.state)
+        api({
+            method: "put",
+            url: `books/${bookID}`,
+            data: this.state,
+            headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
+        })
             .then(res => {
-                notify({ message: res.data.msg, variant: "success" }, () => { this.props.history.push("/admin"); });
+                notify({
+                    message: res.data.msg, variant: "success"
+                },
+                () => {
+                    this.props.history.push("/admin");
+                });
             })
             .catch(err => console.log(err.response.data.msg));
     };
 
     // Retrieves information about the book specified by the bookID
     retrieveBook = (bookID) => {
-        api.get(`books/${bookID}`)
+        api({
+            method: "get",
+            url: `books/${bookID}`,
+            headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
+        })
             .then(res => {
                 const data = res.data;
                 console.log(data);

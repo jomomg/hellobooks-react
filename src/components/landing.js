@@ -1,14 +1,11 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
+import { Route } from "react-router-dom";
 import "./css/landing.css";
 
 
-const buttonStyle = {
-    marginRight: "3px",
-    marginLeft: "3px"
-};
-
 /**
- * Main landing page. This is the page the user encouters 
+ * Main landing page. This is the page the user encounters
  * when they visit the site.
  */
 const LandingPage = () => {
@@ -22,10 +19,22 @@ const LandingPage = () => {
             <div style={{backgroundColor: "teal", margin: "0"}}>
                 <div className="container">
                     <p className="logo">Hello Books</p>
-                    <a className="btn-flat orange" href="/login" style={buttonStyle}>SIGN IN</a>
-                    <a className="btn-flat orange" href="/register" style={buttonStyle}>SIGN UP</a>
-                    <span>or</span>
-                    <a className="btn-flat orange" href="/books" style={buttonStyle}>SEE ALL OUR BOOKS</a>
+                    <Route render={({ history }) => (
+                        <Button style={{backgroundColor: "orange", marginRight: 5}} onClick={()=>history.push("/login")}>
+                        SIGN IN
+                        </Button>
+                    )} />
+                    <Route render={({ history }) => (
+                        <Button style={{backgroundColor: "orange", marginRight: 5}} onClick={()=>history.push("/register")}>
+                        SIGN UP
+                        </Button>
+                    )} />
+                    <span style={{color: "white", fontFamily: "Courier New", fontStyle: "bold"}}>or</span>
+                    <Route render={({ history }) => (
+                        <Button style={{backgroundColor: "orange", marginLeft: 5}} onClick={()=>history.push("/books")}>
+                            SEE ALL OUR BOOKS
+                        </Button>
+                    )} />
                 </div>
             </div>
             <footer className="page-footer teal">

@@ -52,8 +52,10 @@ class EditBook extends React.Component {
         })
             .then(res => {
                 notify({
-                    message: res.data.msg, variant: "success" },
-                    () => { this.props.history.push("/admin");
+                    message: res.data.msg, variant: "success"
+                },
+                () => {
+                    this.props.history.push("/admin");
                 });
             })
             .catch(err => console.log(err.response.data.msg));

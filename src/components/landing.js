@@ -1,6 +1,6 @@
 import React from "react";
-import Button from '@material-ui/core/Button';
-import { Route } from 'react-router-dom';
+import Button from "@material-ui/core/Button";
+import { Route } from "react-router-dom";
 import "./css/landing.css";
 
 
@@ -20,16 +20,16 @@ const LandingPage = () => {
                 <div className="container">
                     <p className="logo">Hello Books</p>
                     <Route render={({ history }) => (
-                    <Button style={{backgroundColor: "orange", marginRight: 5}} onClick={()=>history.push("/login")}>
+                        <Button style={{backgroundColor: "orange", marginRight: 5}} onClick={()=>history.push("/login")}>
                         SIGN IN
-                    </Button>
+                        </Button>
                     )} />
                     <Route render={({ history }) => (
-                    <Button style={{backgroundColor: "orange", marginRight: 5}} onClick={()=>history.push("/register")}>
+                        <Button style={{backgroundColor: "orange", marginRight: 5}} onClick={()=>history.push("/register")}>
                         SIGN UP
-                    </Button>
+                        </Button>
                     )} />
-                    <span style={{color: 'white', fontFamily: 'Courier New', fontStyle: 'bold'}}>or</span>
+                    <span style={{color: "white", fontFamily: "Courier New", fontStyle: "bold"}}>or</span>
                     <Route render={({ history }) => (
                         <Button style={{backgroundColor: "orange", marginLeft: 5}} onClick={()=>history.push("/books")}>
                             SEE ALL OUR BOOKS

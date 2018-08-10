@@ -26,7 +26,7 @@ const BookCard = (props) => {
                 <Card style={{ maxWidth: 200, maxHeight: 370 }}>
                     <CardMedia
                         style={{ height: 200, }}
-                        image={`http://via.placeholder.com/200x300/003da0?text=${props.title.split(' ').join('+')}`}
+                        image={`http://via.placeholder.com/200x300/003da0?text=${props.title.split(" ").join("+")}`}
                         title="Book Cover"
                     />
                     <CardContent style={{ padding: 8 }}>

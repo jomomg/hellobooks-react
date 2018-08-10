@@ -8,7 +8,7 @@ const buttonStyle = {
 };
 
 /**
- * Main landing page. This is the page the user encouters 
+ * Main landing page. This is the page the user encounters
  * when they visit the site.
  */
 const LandingPage = () => {

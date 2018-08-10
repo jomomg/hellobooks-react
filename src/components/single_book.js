@@ -97,7 +97,11 @@ class SingleBookPage extends Component {
 
     // Get the book information using the books ID
     getSingleBook = (bookID) => {
-        api.get(`books/${bookID}`)
+        api({
+            method: "get",
+            url: `books/${bookID}`,
+            headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` },
+        })
             .then(res => {this.setState({book: res.data});})
             .catch(err => {
                 this.setState({errors: (!err.response ? `${err}`: err.response.data.msg)});
@@ -107,7 +111,11 @@ class SingleBookPage extends Component {
 
     // Method for borrowing a book
    borrowBook = bookID => () => {
-       api.post(`users/books/${bookID}`)
+       api({
+           method: "post",
+           url: `users/books/${bookID}`,
+           headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
+       })
            .then(res => {
                this.setState({message: res.data.msg});
                notify({message: this.state.message, variant: "success"}, ()=>{this.props.history.push("/profile");});

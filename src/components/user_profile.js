@@ -103,7 +103,11 @@ class UserProfilePage extends Component {
 
     // Get the books yet to be returned by the user
     getUnReturnedBooks = ()=> {
-        api.get("users/books?returned=false")
+        api({
+            method: "get",
+            url: "users/books?returned=false",
+            headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
+        })
             .then(res => {this.setState({unReturnedBooks: res.data}); console.log(res);})
             .catch(err => {
                 console.log(`${err}`);
@@ -113,7 +117,11 @@ class UserProfilePage extends Component {
 
     // This method makes the return book api call
     returnBook = (bookID)=> {
-        api.put(`users/books/${bookID}`)
+        api.put({
+            method: "put",
+            url: `users/books/${bookID}`,
+            headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
+        })
             .then(() => {this.getUnReturnedBooks();})
             .catch(err => {console.log(err);})
             .then(() => {this.getBorrowingHistory();});

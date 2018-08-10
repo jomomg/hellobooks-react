@@ -35,7 +35,11 @@ class TopNav extends Component {
     handleLogout = () => {
         this.setState({ anchorEl: null });
         Auth.logout();
-        api.post("auth/logout")
+        api({
+            method: "post",
+            url: "auth/logout",
+            headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
+        })
             .then(() => {
                 this.props.history.push("/");
             })

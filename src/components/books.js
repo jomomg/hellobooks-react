@@ -10,6 +10,9 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import { Route } from "react-router-dom";
 import api from "../utils/requests";
 import Paper from "@material-ui/core/Paper";
+import CheckCircle from "@material-ui/icons/CheckCircle";
+import ErrorIcon from "@material-ui/icons/Error";
+import Tooltip from "@material-ui/core/Tooltip";
 import TopNav from "./navbar";
 
 const books_url = "books";
@@ -49,6 +52,15 @@ const BookCard = (props) => {
                                 More
                             </Button>
                         )} />
+                        {props.available >= 1 ?
+                            <Tooltip title="Available">
+                                <CheckCircle style={{ color: "green", marginLeft: 95 }} />
+                            </Tooltip>
+                            :
+                            <Tooltip title="Unavailable">
+                                <ErrorIcon style={{ color: "red", marginLeft: 95 }} />
+                            </Tooltip>
+                        }
                     </CardActions>
                 </Card>
             </Grid>
@@ -112,7 +124,13 @@ class BookPage extends React.Component {
                     <Grid container spacing={24}>
                         {this.state.books.map(book => {
                             return (
-                                <BookCard key={book.id} title={book.title} author={book.author} id={book.id} />
+                                <BookCard
+                                    key={book.id}
+                                    title={book.title}
+                                    author={book.author}
+                                    id={book.id}
+                                    available={book.available}
+                                />
                             );
                         })}
                     </Grid>

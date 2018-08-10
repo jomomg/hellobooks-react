@@ -6,9 +6,9 @@ body {
 .logo {
   font-size: 9em;
   color: white;
-  font-family: "Courier New";
+  font-family: "Courier New", monospace;
   font-weight: bold;
-  margin: 0;
+  margin-bottom: 16%;
 }
 
 .teal {
@@ -52,7 +52,7 @@ body {
     padding-top: 20px;
     color: #fff;
     background-color: #ee6e73;
-    font-family: "Courier New";
+    font-family: "Courier New", monospace;
 }
 
 .page-footer .footer-copyright {

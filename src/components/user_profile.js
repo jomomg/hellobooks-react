@@ -96,7 +96,11 @@ class UserProfilePage extends Component {
 
     // Get all the books the user has borrowed
     getBorrowingHistory = () => {
-        api.get("users/books")
+        api({
+            method: "get",
+            url: "users/books",
+            headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
+        })
             .then(res => { this.setState({borrowingHistory: res.data}); console.log(res.data); })
             .catch(err => { console.log(err.response);});
     };
@@ -117,7 +121,7 @@ class UserProfilePage extends Component {
 
     // This method makes the return book api call
     returnBook = (bookID)=> {
-        api.put({
+        api({
             method: "put",
             url: `users/books/${bookID}`,
             headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }

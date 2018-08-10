@@ -5,6 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import api from "../utils/requests";
 import Notifier, { notify } from "./notifier";
+import NotFound from "./NotFound";
 
 const inputStyles = {
     marginLeft: "4%",
@@ -29,7 +30,8 @@ class EditBook extends React.Component {
             category: "",
             subcategory: "",
             description: "",
-            errors: ""
+            errors: "",
+            found: true
         };
     }
 
@@ -80,9 +82,10 @@ class EditBook extends React.Component {
                     isbn: data.edition,
                     category: data.category,
                     subcategory: data.subcategory,
-                    description: data.description
+                    description: data.description,
+                    found: true
                 });
-            }).catch(err => this.setState({errors: `${err}`}));
+            }).catch(err => this.setState({errors: `${err}`, found: false}));
     };
 
     componentDidMount() {
@@ -91,6 +94,10 @@ class EditBook extends React.Component {
 
 
     render() {
+        if (!this.state.found) {
+            return (<NotFound/>);
+        }
+
         return (
             <Paper style={{ margin: "5% auto 5% auto", width: 450, height: 900, position: "relative" }}>
                 <Typography variant={"headline"} component={"h2"} style={{ paddingTop: "3%", textAlign: "center" }}>

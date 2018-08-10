@@ -15,6 +15,7 @@ import api from "../utils/requests";
 import TopNav from "./navbar";
 import Auth from "../utils/authentication";
 import Notifier, { notify } from "./notifier";
+import NotFound from "./NotFound";
 
 /**
  * Material UI card that contains book title, 
@@ -92,6 +93,7 @@ class SingleBookPage extends Component {
             book: {},
             errors: null,
             message: "",
+            found: true,
         };
     }
 
@@ -102,9 +104,9 @@ class SingleBookPage extends Component {
             url: `books/${bookID}`,
             headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` },
         })
-            .then(res => {this.setState({book: res.data});})
+            .then(res => {this.setState({book: res.data, found: true}); })
             .catch(err => {
-                this.setState({errors: (!err.response ? `${err}`: err.response.data.msg)});
+                this.setState({errors: (!err.response ? `${err}`: err.response.data.msg), found: false});
             });
     };
 
@@ -135,6 +137,10 @@ class SingleBookPage extends Component {
    }
 
    render() {
+       if (!this.state.found) {
+           return (<NotFound/>);
+       }
+       
        return(
            <div>
                <TopNav title={"Book Info"} {...this.props}/>

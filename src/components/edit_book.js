@@ -28,7 +28,8 @@ class EditBook extends React.Component {
             isbn: "",
             category: "",
             subcategory: "",
-            description: ""
+            description: "",
+            errors: ""
         };
     }
 
@@ -58,7 +59,7 @@ class EditBook extends React.Component {
                     this.props.history.push("/admin");
                 });
             })
-            .catch(err => console.log(err.response.data.msg));
+            .catch(err => this.setState({errors: err.response.data.msg}));
     };
 
     // Retrieves information about the book specified by the bookID
@@ -70,7 +71,6 @@ class EditBook extends React.Component {
         })
             .then(res => {
                 const data = res.data;
-                console.log(data);
                 this.setState({
                     title: data.title,
                     author: data.author,
@@ -82,7 +82,7 @@ class EditBook extends React.Component {
                     subcategory: data.subcategory,
                     description: data.description
                 });
-            }).catch(err => console.log(`${err}`));
+            }).catch(err => this.setState({errors: `${err}`}));
     };
 
     componentDidMount() {

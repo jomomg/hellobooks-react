@@ -83,6 +83,8 @@ class AdminPage extends Component {
         super(props);
         this.state = {
             books: [],
+            errors: "",
+            messages: "",
             dialogOpenDelete: false, // trigger for delete dialog
             dialogOpenAdd: false, // trigger for add dialog
             title: "",
@@ -105,7 +107,7 @@ class AdminPage extends Component {
     getBooks = () => {
         api.get(books_url)
             .then(res => { this.setState({ books: res.data }); })
-            .catch(err => { console.log(err.response.data); });
+            .catch(err => { this.setState({errors: err.response.data}); });
     };
 
     // POST the data entered in the form
@@ -120,16 +122,19 @@ class AdminPage extends Component {
             category: this.state.category,
             subcategory: this.state.subcategory,
             description: this.state.description
-        }).then(res => {
-            console.log(res);
-        }).catch(err => console.log(err.response.data));
+        }).then(res => {this.setState({ messages: res.data.msg });
+        }).catch(err => this.setState({ errors: err.response.data.msg }));
     };
 
     // Send DELETE request to the api
     deleteBook = (bookID) => {
-        api.delete(`books/${bookID}`)
-            .then(res => { console.log(res.data); })
-            .catch(err => { console.log(err.data); })
+        api({
+            method: "delete", 
+            url: `books/${bookID}`,
+            headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
+        })
+            .then(res => { this.setState({ messages: res.data.msg }); })
+            .catch(err => { this.setState({errors: err.data}); })
             .then(() => { this.getBooks(); });
     };
 

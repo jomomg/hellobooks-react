@@ -50,7 +50,6 @@ class Login extends Component {
             .catch(err => {
                 this.setState({errors: (err.response === undefined ? `${err}`: err.response.data.msg)});
                 notify({message: this.state.errors, variant: "error"});
-                console.log(err);
             });
     };
 

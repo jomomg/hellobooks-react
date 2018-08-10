@@ -21,6 +21,7 @@ class TopNav extends Component {
         super(props);
         this.state = {
             anchorEl: null,
+            errors: "",
         };
     }
 
@@ -44,7 +45,7 @@ class TopNav extends Component {
                 this.props.history.push("/");
             })
             .catch(err => {
-                console.log(`${err}`);
+                this.setState({ errors: `${err}` });
                 this.props.history.push("/");
             });
     };

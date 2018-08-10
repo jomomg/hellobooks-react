@@ -105,7 +105,6 @@ class SingleBookPage extends Component {
             .then(res => {this.setState({book: res.data});})
             .catch(err => {
                 this.setState({errors: (!err.response ? `${err}`: err.response.data.msg)});
-                console.log(this.state.errors);
             });
     };
 
@@ -121,7 +120,6 @@ class SingleBookPage extends Component {
                notify({message: this.state.message, variant: "success"}, ()=>{this.props.history.push("/profile");});
            })
            .catch(err => {
-               console.log(err);
                this.setState({errors: err.response.data.msg });
                notify({message: this.state.errors, variant: "error"});
            });

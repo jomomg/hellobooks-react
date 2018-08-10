@@ -96,8 +96,6 @@ class AdminPage extends Component {
             category: "",
             subcategory: "",
             description: "",
-            messages: "",
-            errors: "",
         };
     }
 
@@ -113,7 +111,7 @@ class AdminPage extends Component {
             headers: { Authorization: "Bearer" + localStorage.getItem("accessToken") }
         })
             .then(res => { this.setState({ books: res.data }); })
-            .catch(err => { this.setState({errors: err.response.data}); });
+            .catch(err => { this.setState({errors: err.response.data.msg}); });
     };
 
     // POST the data entered in the form
@@ -140,7 +138,7 @@ class AdminPage extends Component {
             headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
         })
             .then(res => { this.setState({ messages: res.data.msg }); })
-            .catch(err => { this.setState({errors: err.data}); })
+            .catch(err => { this.setState({errors: err.data.msg}); })
             .then(() => { this.getBooks(); });
     };
 

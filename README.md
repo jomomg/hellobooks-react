@@ -19,9 +19,9 @@ Node.js(>10.5.0 Recommended), npm, Hellobooks API
 
 ## More info
 
-[Heroku app](hellobooks-react.herokuapp.com)
-[Hellobooks API heroku link](hello-kitabu.herokuapp.com)
-[Hellobooks API documentation](https://github.com/jomomg/hellobooks_api)
+- [Heroku app](hellobooks-react.herokuapp.com)
+- [Hellobooks API heroku link](hello-kitabu.herokuapp.com)
+- [Hellobooks API documentation](https://github.com/jomomg/hellobooks_api)
 
 ## Contributors
 

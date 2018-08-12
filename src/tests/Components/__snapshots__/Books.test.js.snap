@@ -74,6 +74,7 @@ exports[`<BookPage/> it renders successfully 1`] = `
       title=""
     />
   </div>
+  <Notifier />
   <FloatingAddButton
     handleClick={[Function]}
   />

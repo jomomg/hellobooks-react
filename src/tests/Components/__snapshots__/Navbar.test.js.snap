@@ -155,11 +155,12 @@ exports[`<TopNav/> it renders successfully 1`] = `
                                 "body2": "MuiTypography-body2-48",
                                 "button": "MuiTypography-button-51",
                                 "caption": "MuiTypography-caption-50",
-                                "colorError": "MuiTypography-colorError-63",
+                                "colorError": "MuiTypography-colorError-64",
                                 "colorInherit": "MuiTypography-colorInherit-59",
                                 "colorPrimary": "MuiTypography-colorPrimary-60",
                                 "colorSecondary": "MuiTypography-colorSecondary-61",
-                                "colorTextSecondary": "MuiTypography-colorTextSecondary-62",
+                                "colorTextPrimary": "MuiTypography-colorTextPrimary-62",
+                                "colorTextSecondary": "MuiTypography-colorTextSecondary-63",
                                 "display1": "MuiTypography-display1-44",
                                 "display2": "MuiTypography-display2-43",
                                 "display3": "MuiTypography-display3-42",
@@ -274,11 +275,12 @@ exports[`<TopNav/> it renders successfully 1`] = `
                                 "body2": "MuiTypography-body2-48",
                                 "button": "MuiTypography-button-51",
                                 "caption": "MuiTypography-caption-50",
-                                "colorError": "MuiTypography-colorError-63",
+                                "colorError": "MuiTypography-colorError-64",
                                 "colorInherit": "MuiTypography-colorInherit-59",
                                 "colorPrimary": "MuiTypography-colorPrimary-60",
                                 "colorSecondary": "MuiTypography-colorSecondary-61",
-                                "colorTextSecondary": "MuiTypography-colorTextSecondary-62",
+                                "colorTextPrimary": "MuiTypography-colorTextPrimary-62",
+                                "colorTextSecondary": "MuiTypography-colorTextSecondary-63",
                                 "display1": "MuiTypography-display1-44",
                                 "display2": "MuiTypography-display2-43",
                                 "display3": "MuiTypography-display3-42",
@@ -341,30 +343,30 @@ exports[`<TopNav/> it renders successfully 1`] = `
                               <Button
                                 classes={
                                   Object {
-                                    "colorInherit": "MuiButton-colorInherit-83",
-                                    "contained": "MuiButton-contained-73",
-                                    "containedPrimary": "MuiButton-containedPrimary-74",
-                                    "containedSecondary": "MuiButton-containedSecondary-75",
-                                    "disabled": "MuiButton-disabled-82",
-                                    "extendedFab": "MuiButton-extendedFab-80",
-                                    "fab": "MuiButton-fab-79",
-                                    "flat": "MuiButton-flat-69",
-                                    "flatPrimary": "MuiButton-flatPrimary-70",
-                                    "flatSecondary": "MuiButton-flatSecondary-71",
-                                    "focusVisible": "MuiButton-focusVisible-81",
-                                    "fullWidth": "MuiButton-fullWidth-87",
-                                    "label": "MuiButton-label-65",
-                                    "mini": "MuiButton-mini-84",
-                                    "outlined": "MuiButton-outlined-72",
-                                    "raised": "MuiButton-raised-76",
-                                    "raisedPrimary": "MuiButton-raisedPrimary-77",
-                                    "raisedSecondary": "MuiButton-raisedSecondary-78",
-                                    "root": "MuiButton-root-64",
-                                    "sizeLarge": "MuiButton-sizeLarge-86",
-                                    "sizeSmall": "MuiButton-sizeSmall-85",
-                                    "text": "MuiButton-text-66",
-                                    "textPrimary": "MuiButton-textPrimary-67",
-                                    "textSecondary": "MuiButton-textSecondary-68",
+                                    "colorInherit": "MuiButton-colorInherit-84",
+                                    "contained": "MuiButton-contained-74",
+                                    "containedPrimary": "MuiButton-containedPrimary-75",
+                                    "containedSecondary": "MuiButton-containedSecondary-76",
+                                    "disabled": "MuiButton-disabled-83",
+                                    "extendedFab": "MuiButton-extendedFab-81",
+                                    "fab": "MuiButton-fab-80",
+                                    "flat": "MuiButton-flat-70",
+                                    "flatPrimary": "MuiButton-flatPrimary-71",
+                                    "flatSecondary": "MuiButton-flatSecondary-72",
+                                    "focusVisible": "MuiButton-focusVisible-82",
+                                    "fullWidth": "MuiButton-fullWidth-88",
+                                    "label": "MuiButton-label-66",
+                                    "mini": "MuiButton-mini-85",
+                                    "outlined": "MuiButton-outlined-73",
+                                    "raised": "MuiButton-raised-77",
+                                    "raisedPrimary": "MuiButton-raisedPrimary-78",
+                                    "raisedSecondary": "MuiButton-raisedSecondary-79",
+                                    "root": "MuiButton-root-65",
+                                    "sizeLarge": "MuiButton-sizeLarge-87",
+                                    "sizeSmall": "MuiButton-sizeSmall-86",
+                                    "text": "MuiButton-text-67",
+                                    "textPrimary": "MuiButton-textPrimary-68",
+                                    "textSecondary": "MuiButton-textSecondary-69",
                                   }
                                 }
                                 color="inherit"
@@ -379,22 +381,22 @@ exports[`<TopNav/> it renders successfully 1`] = `
                                 variant="text"
                               >
                                 <WithStyles(ButtonBase)
-                                  className="MuiButton-root-64 MuiButton-text-66 MuiButton-flat-69 MuiButton-colorInherit-83"
+                                  className="MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-colorInherit-84"
                                   component="button"
                                   disabled={false}
                                   focusRipple={true}
-                                  focusVisibleClassName="MuiButton-focusVisible-81"
+                                  focusVisibleClassName="MuiButton-focusVisible-82"
                                   onClick={[Function]}
                                   type="button"
                                 >
                                   <ButtonBase
                                     centerRipple={false}
-                                    className="MuiButton-root-64 MuiButton-text-66 MuiButton-flat-69 MuiButton-colorInherit-83"
+                                    className="MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-colorInherit-84"
                                     classes={
                                       Object {
-                                        "disabled": "MuiButtonBase-disabled-89",
-                                        "focusVisible": "MuiButtonBase-focusVisible-90",
-                                        "root": "MuiButtonBase-root-88",
+                                        "disabled": "MuiButtonBase-disabled-90",
+                                        "focusVisible": "MuiButtonBase-focusVisible-91",
+                                        "root": "MuiButtonBase-root-89",
                                       }
                                     }
                                     component="button"
@@ -402,13 +404,13 @@ exports[`<TopNav/> it renders successfully 1`] = `
                                     disableTouchRipple={false}
                                     disabled={false}
                                     focusRipple={true}
-                                    focusVisibleClassName="MuiButton-focusVisible-81"
+                                    focusVisibleClassName="MuiButton-focusVisible-82"
                                     onClick={[Function]}
                                     tabIndex="0"
                                     type="button"
                                   >
                                     <button
-                                      className="MuiButtonBase-root-88 MuiButton-root-64 MuiButton-text-66 MuiButton-flat-69 MuiButton-colorInherit-83"
+                                      className="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-colorInherit-84"
                                       disabled={false}
                                       onBlur={[Function]}
                                       onClick={[Function]}
@@ -425,7 +427,7 @@ exports[`<TopNav/> it renders successfully 1`] = `
                                       type="button"
                                     >
                                       <span
-                                        className="MuiButton-label-65"
+                                        className="MuiButton-label-66"
                                       >
                                         Login
                                       </span>
@@ -437,25 +439,25 @@ exports[`<TopNav/> it renders successfully 1`] = `
                                           center={false}
                                           classes={
                                             Object {
-                                              "child": "MuiTouchRipple-child-95",
-                                              "childLeaving": "MuiTouchRipple-childLeaving-96",
-                                              "childPulsate": "MuiTouchRipple-childPulsate-97",
-                                              "ripple": "MuiTouchRipple-ripple-92",
-                                              "ripplePulsate": "MuiTouchRipple-ripplePulsate-94",
-                                              "rippleVisible": "MuiTouchRipple-rippleVisible-93",
-                                              "root": "MuiTouchRipple-root-91",
+                                              "child": "MuiTouchRipple-child-96",
+                                              "childLeaving": "MuiTouchRipple-childLeaving-97",
+                                              "childPulsate": "MuiTouchRipple-childPulsate-98",
+                                              "ripple": "MuiTouchRipple-ripple-93",
+                                              "ripplePulsate": "MuiTouchRipple-ripplePulsate-95",
+                                              "rippleVisible": "MuiTouchRipple-rippleVisible-94",
+                                              "root": "MuiTouchRipple-root-92",
                                             }
                                           }
                                         >
                                           <TransitionGroup
                                             childFactory={[Function]}
-                                            className="MuiTouchRipple-root-91"
+                                            className="MuiTouchRipple-root-92"
                                             component="span"
                                             enter={true}
                                             exit={true}
                                           >
                                             <span
-                                              className="MuiTouchRipple-root-91"
+                                              className="MuiTouchRipple-root-92"
                                             />
                                           </TransitionGroup>
                                         </TouchRipple>

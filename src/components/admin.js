@@ -16,6 +16,7 @@ import AddIcon from "@material-ui/icons/Add";
 import TopNav from "./navbar";
 import DeleteDialog from "./dialogs";
 import CreateBook from "./create_book";
+import Notifier, { notify } from "./notifier";
 
 
 const books_url = "books";
@@ -133,6 +134,7 @@ class AdminPage extends Component {
             headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }
         }).then(res => {
             this.setState({ messages: res.data.msg });
+            notify({ message: this.state.messages, variant: "success" });
         }).catch(err => this.setState({ errors: err.response.data.msg }));
     };
 
@@ -239,6 +241,7 @@ class AdminPage extends Component {
                         description={this.state.description}
                     />
                 </div>
+                <Notifier />
                 <FloatingAddButton handleClick={this.handleOpenDialogAdd} />
             </div>
         );

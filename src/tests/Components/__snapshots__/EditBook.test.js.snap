@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EditBook/> it renders successfully 1`] = `
+<WithStyles(Paper)
+  style={
+    Object {
+      "height": 900,
+      "margin": "5% auto 5% auto",
+      "position": "relative",
+      "width": 450,
+    }
+  }
+>
+  <WithStyles(Typography)
+    component="h2"
+    style={
+      Object {
+        "paddingTop": "3%",
+        "textAlign": "center",
+      }
+    }
+    variant="headline"
+  >
+    Edit Book
+  </WithStyles(Typography)>
+  <form
+    noValidate={true}
+    onSubmit={[Function]}
+    style={
+      Object {
+        "display": "flex",
+        "flexWrap": "wrap",
+        "width": "450px",
+      }
+    }
+  >
+    <TextField
+      id="title"
+      label="Title"
+      margin="normal"
+      onChange={[Function]}
+      placeholder=""
+      required={true}
+      select={false}
+      style={
+        Object {
+          "marginLeft": "4%",
+          "marginRight": "1%",
+          "width": "400px",
+        }
+      }
+      value=""
+    />
+    <TextField
+      id="author"
+      label="Author"
+      margin="normal"
+      onChange={[Function]}
+      placeholder=""
+      required={true}
+      select={false}
+      style={
+        Object {
+          "marginLeft": "4%",
+          "marginRight": "1%",
+          "width": "400px",
+        }
+      }
+      value=""
+    />
+    <TextField
+      id="publisher"
+      label="publisher"
+      margin="normal"
+      onChange={[Function]}
+      placeholder=""
+      required={false}
+      select={false}
+      style={
+        Object {
+          "marginLeft": "4%",
+          "marginRight": "1%",
+          "width": "400px",
+        }
+      }
+      value=""
+    />
+    <TextField
+      id="year"
+      label="Year"
+      margin="normal"
+      onChange={[Function]}
+      placeholder=""
+      required={false}
+      select={false}
+      style={
+        Object {
+          "marginLeft": "4%",
+          "marginRight": "1%",
+          "width": "400px",
+        }
+      }
+      value=""
+    />
+    <TextField
+      id="edition"
+      label="Edition"
+      margin="normal"
+      onChange={[Function]}
+      placeholder=""
+      required={false}
+      select={false}
+      style={
+        Object {
+          "marginLeft": "4%",
+          "marginRight": "1%",
+          "width": "400px",
+        }
+      }
+      value=""
+    />
+    <TextField
+      id="isbn"
+      label="ISBN"
+      margin="normal"
+      onChange={[Function]}
+      placeholder=""
+      required={true}
+      select={false}
+      style={
+        Object {
+          "marginLeft": "4%",
+          "marginRight": "1%",
+          "width": "400px",
+        }
+      }
+      value=""
+    />
+    <TextField
+      id="category"
+      label="Category"
+      margin="normal"
+      onChange={[Function]}
+      placeholder=""
+      required={false}
+      select={false}
+      style={
+        Object {
+          "marginLeft": "4%",
+          "marginRight": "1%",
+          "width": "400px",
+        }
+      }
+      value=""
+    />
+    <TextField
+      id="genre"
+      label="Genre"
+      margin="normal"
+      onChange={[Function]}
+      placeholder=""
+      required={false}
+      select={false}
+      style={
+        Object {
+          "marginLeft": "4%",
+          "marginRight": "1%",
+          "width": "400px",
+        }
+      }
+      value=""
+    />
+    <TextField
+      id="description"
+      label="Description"
+      margin="normal"
+      multiline={true}
+      onChange={[Function]}
+      placeholder=""
+      required={false}
+      rows="8"
+      select={false}
+      style={
+        Object {
+          "marginLeft": "4%",
+          "marginRight": "1%",
+          "width": "400px",
+        }
+      }
+      value=""
+    />
+    <WithStyles(Button)
+      color="primary"
+      style={
+        Object {
+          "backgroundColor": "orange",
+          "bottom": "10px",
+          "color": "black",
+          "left": 195,
+          "position": "absolute",
+          "width": 40,
+        }
+      }
+      type="submit"
+      variant="contained"
+    >
+      SAVE
+    </WithStyles(Button)>
+  </form>
+  <Notifier />
+</WithStyles(Paper)>
+`;

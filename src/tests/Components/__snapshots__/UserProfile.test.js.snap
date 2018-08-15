@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserProfilePage/> it renders successfully 1`] = `
+<div>
+  <TopNav
+    title="My Profile"
+  />
+  <div
+    style={
+      Object {
+        "margin": "5%",
+      }
+    }
+  >
+    <UserAvatar />
+  </div>
+  <WithStyles(Paper)
+    style={
+      Object {
+        "margin": "5% 5% 3% 5%",
+      }
+    }
+  >
+    <br />
+    <WithStyles(Typography)
+      component="h2"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+      variant="headline"
+    >
+      Books you have not returned
+    </WithStyles(Typography)>
+    <WithStyles(Table)>
+      <WithStyles(TableHead)>
+        <WithStyles(TableRow)>
+          <WithStyles(TableCell)>
+            Book Id
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)>
+            Title
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)>
+            Author
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)>
+            Actions
+          </WithStyles(TableCell)>
+        </WithStyles(TableRow)>
+      </WithStyles(TableHead)>
+      <WithStyles(TableBody) />
+    </WithStyles(Table)>
+  </WithStyles(Paper)>
+  <WithStyles(Paper)
+    style={
+      Object {
+        "margin": "0% 5% 0% 5%",
+      }
+    }
+  >
+    <br />
+    <WithStyles(Typography)
+      component="h2"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+      variant="headline"
+    >
+      Your borrowing history
+    </WithStyles(Typography)>
+    <WithStyles(Table)>
+      <WithStyles(TableHead)>
+        <WithStyles(TableRow)>
+          <WithStyles(TableCell)>
+            Title
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)>
+            Borrowed On
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)>
+            Returned
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)>
+            Returned On
+          </WithStyles(TableCell)>
+        </WithStyles(TableRow)>
+      </WithStyles(TableHead)>
+      <WithStyles(TableBody) />
+    </WithStyles(Table)>
+  </WithStyles(Paper)>
+</div>
+`;

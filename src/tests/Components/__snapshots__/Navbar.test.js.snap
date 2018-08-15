@@ -1,0 +1,486 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TopNav/> it renders successfully 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <TopNav
+      history={Array []}
+      title="my nav"
+    >
+      <div>
+        <WithStyles(AppBar)
+          position="static"
+          style={
+            Object {
+              "backgroundColor": "teal",
+            }
+          }
+        >
+          <AppBar
+            classes={
+              Object {
+                "colorDefault": "MuiAppBar-colorDefault-6",
+                "colorPrimary": "MuiAppBar-colorPrimary-7",
+                "colorSecondary": "MuiAppBar-colorSecondary-8",
+                "positionAbsolute": "MuiAppBar-positionAbsolute-3",
+                "positionFixed": "MuiAppBar-positionFixed-2",
+                "positionStatic": "MuiAppBar-positionStatic-5",
+                "positionSticky": "MuiAppBar-positionSticky-4",
+                "root": "MuiAppBar-root-1",
+              }
+            }
+            color="primary"
+            position="static"
+            style={
+              Object {
+                "backgroundColor": "teal",
+              }
+            }
+          >
+            <WithStyles(Paper)
+              className="MuiAppBar-root-1 MuiAppBar-positionStatic-5 MuiAppBar-colorPrimary-7"
+              component="header"
+              elevation={4}
+              square={true}
+              style={
+                Object {
+                  "backgroundColor": "teal",
+                }
+              }
+            >
+              <Paper
+                className="MuiAppBar-root-1 MuiAppBar-positionStatic-5 MuiAppBar-colorPrimary-7"
+                classes={
+                  Object {
+                    "elevation0": "MuiPaper-elevation0-11",
+                    "elevation1": "MuiPaper-elevation1-12",
+                    "elevation10": "MuiPaper-elevation10-21",
+                    "elevation11": "MuiPaper-elevation11-22",
+                    "elevation12": "MuiPaper-elevation12-23",
+                    "elevation13": "MuiPaper-elevation13-24",
+                    "elevation14": "MuiPaper-elevation14-25",
+                    "elevation15": "MuiPaper-elevation15-26",
+                    "elevation16": "MuiPaper-elevation16-27",
+                    "elevation17": "MuiPaper-elevation17-28",
+                    "elevation18": "MuiPaper-elevation18-29",
+                    "elevation19": "MuiPaper-elevation19-30",
+                    "elevation2": "MuiPaper-elevation2-13",
+                    "elevation20": "MuiPaper-elevation20-31",
+                    "elevation21": "MuiPaper-elevation21-32",
+                    "elevation22": "MuiPaper-elevation22-33",
+                    "elevation23": "MuiPaper-elevation23-34",
+                    "elevation24": "MuiPaper-elevation24-35",
+                    "elevation3": "MuiPaper-elevation3-14",
+                    "elevation4": "MuiPaper-elevation4-15",
+                    "elevation5": "MuiPaper-elevation5-16",
+                    "elevation6": "MuiPaper-elevation6-17",
+                    "elevation7": "MuiPaper-elevation7-18",
+                    "elevation8": "MuiPaper-elevation8-19",
+                    "elevation9": "MuiPaper-elevation9-20",
+                    "root": "MuiPaper-root-9",
+                    "rounded": "MuiPaper-rounded-10",
+                  }
+                }
+                component="header"
+                elevation={4}
+                square={true}
+                style={
+                  Object {
+                    "backgroundColor": "teal",
+                  }
+                }
+              >
+                <header
+                  className="MuiPaper-root-9 MuiPaper-elevation4-15 MuiAppBar-root-1 MuiAppBar-positionStatic-5 MuiAppBar-colorPrimary-7"
+                  style={
+                    Object {
+                      "backgroundColor": "teal",
+                    }
+                  }
+                >
+                  <WithStyles(Toolbar)>
+                    <Toolbar
+                      classes={
+                        Object {
+                          "dense": "MuiToolbar-dense-39",
+                          "gutters": "MuiToolbar-gutters-37",
+                          "regular": "MuiToolbar-regular-38",
+                          "root": "MuiToolbar-root-36",
+                        }
+                      }
+                      disableGutters={false}
+                      variant="regular"
+                    >
+                      <div
+                        className="MuiToolbar-root-36 MuiToolbar-regular-38 MuiToolbar-gutters-37"
+                      >
+                        <WithStyles(Typography)
+                          color="inherit"
+                          style={
+                            Object {
+                              "flexGrow": 1,
+                            }
+                          }
+                        >
+                          <Typography
+                            align="inherit"
+                            classes={
+                              Object {
+                                "alignCenter": "MuiTypography-alignCenter-53",
+                                "alignJustify": "MuiTypography-alignJustify-55",
+                                "alignLeft": "MuiTypography-alignLeft-52",
+                                "alignRight": "MuiTypography-alignRight-54",
+                                "body1": "MuiTypography-body1-49",
+                                "body2": "MuiTypography-body2-48",
+                                "button": "MuiTypography-button-51",
+                                "caption": "MuiTypography-caption-50",
+                                "colorError": "MuiTypography-colorError-64",
+                                "colorInherit": "MuiTypography-colorInherit-59",
+                                "colorPrimary": "MuiTypography-colorPrimary-60",
+                                "colorSecondary": "MuiTypography-colorSecondary-61",
+                                "colorTextPrimary": "MuiTypography-colorTextPrimary-62",
+                                "colorTextSecondary": "MuiTypography-colorTextSecondary-63",
+                                "display1": "MuiTypography-display1-44",
+                                "display2": "MuiTypography-display2-43",
+                                "display3": "MuiTypography-display3-42",
+                                "display4": "MuiTypography-display4-41",
+                                "gutterBottom": "MuiTypography-gutterBottom-57",
+                                "headline": "MuiTypography-headline-45",
+                                "noWrap": "MuiTypography-noWrap-56",
+                                "paragraph": "MuiTypography-paragraph-58",
+                                "root": "MuiTypography-root-40",
+                                "subheading": "MuiTypography-subheading-47",
+                                "title": "MuiTypography-title-46",
+                              }
+                            }
+                            color="inherit"
+                            gutterBottom={false}
+                            headlineMapping={
+                              Object {
+                                "body1": "p",
+                                "body2": "aside",
+                                "display1": "h1",
+                                "display2": "h1",
+                                "display3": "h1",
+                                "display4": "h1",
+                                "headline": "h1",
+                                "subheading": "h3",
+                                "title": "h2",
+                              }
+                            }
+                            noWrap={false}
+                            paragraph={false}
+                            style={
+                              Object {
+                                "flexGrow": 1,
+                              }
+                            }
+                            variant="body1"
+                          >
+                            <p
+                              className="MuiTypography-root-40 MuiTypography-body1-49 MuiTypography-colorInherit-59"
+                              style={
+                                Object {
+                                  "flexGrow": 1,
+                                }
+                              }
+                            >
+                              <Link
+                                replace={false}
+                                style={
+                                  Object {
+                                    "color": "white",
+                                  }
+                                }
+                                to="/"
+                              >
+                                <a
+                                  href="/"
+                                  onClick={[Function]}
+                                  style={
+                                    Object {
+                                      "color": "white",
+                                    }
+                                  }
+                                >
+                                  Home
+                                </a>
+                              </Link>
+                              <Link
+                                replace={false}
+                                style={
+                                  Object {
+                                    "color": "white",
+                                    "marginLeft": 5,
+                                  }
+                                }
+                                to="/books"
+                              >
+                                <a
+                                  href="/books"
+                                  onClick={[Function]}
+                                  style={
+                                    Object {
+                                      "color": "white",
+                                      "marginLeft": 5,
+                                    }
+                                  }
+                                >
+                                  Books
+                                </a>
+                              </Link>
+                            </p>
+                          </Typography>
+                        </WithStyles(Typography)>
+                        <WithStyles(Typography)
+                          color="inherit"
+                          id="nav-title"
+                          style={
+                            Object {
+                              "flexGrow": 1,
+                            }
+                          }
+                          variant="title"
+                        >
+                          <Typography
+                            align="inherit"
+                            classes={
+                              Object {
+                                "alignCenter": "MuiTypography-alignCenter-53",
+                                "alignJustify": "MuiTypography-alignJustify-55",
+                                "alignLeft": "MuiTypography-alignLeft-52",
+                                "alignRight": "MuiTypography-alignRight-54",
+                                "body1": "MuiTypography-body1-49",
+                                "body2": "MuiTypography-body2-48",
+                                "button": "MuiTypography-button-51",
+                                "caption": "MuiTypography-caption-50",
+                                "colorError": "MuiTypography-colorError-64",
+                                "colorInherit": "MuiTypography-colorInherit-59",
+                                "colorPrimary": "MuiTypography-colorPrimary-60",
+                                "colorSecondary": "MuiTypography-colorSecondary-61",
+                                "colorTextPrimary": "MuiTypography-colorTextPrimary-62",
+                                "colorTextSecondary": "MuiTypography-colorTextSecondary-63",
+                                "display1": "MuiTypography-display1-44",
+                                "display2": "MuiTypography-display2-43",
+                                "display3": "MuiTypography-display3-42",
+                                "display4": "MuiTypography-display4-41",
+                                "gutterBottom": "MuiTypography-gutterBottom-57",
+                                "headline": "MuiTypography-headline-45",
+                                "noWrap": "MuiTypography-noWrap-56",
+                                "paragraph": "MuiTypography-paragraph-58",
+                                "root": "MuiTypography-root-40",
+                                "subheading": "MuiTypography-subheading-47",
+                                "title": "MuiTypography-title-46",
+                              }
+                            }
+                            color="inherit"
+                            gutterBottom={false}
+                            headlineMapping={
+                              Object {
+                                "body1": "p",
+                                "body2": "aside",
+                                "display1": "h1",
+                                "display2": "h1",
+                                "display3": "h1",
+                                "display4": "h1",
+                                "headline": "h1",
+                                "subheading": "h3",
+                                "title": "h2",
+                              }
+                            }
+                            id="nav-title"
+                            noWrap={false}
+                            paragraph={false}
+                            style={
+                              Object {
+                                "flexGrow": 1,
+                              }
+                            }
+                            variant="title"
+                          >
+                            <h2
+                              className="MuiTypography-root-40 MuiTypography-title-46 MuiTypography-colorInherit-59"
+                              id="nav-title"
+                              style={
+                                Object {
+                                  "flexGrow": 1,
+                                }
+                              }
+                            >
+                              my nav
+                            </h2>
+                          </Typography>
+                        </WithStyles(Typography)>
+                        <div>
+                          <Route
+                            render={[Function]}
+                          >
+                            <WithStyles(Button)
+                              color="inherit"
+                              onClick={[Function]}
+                            >
+                              <Button
+                                classes={
+                                  Object {
+                                    "colorInherit": "MuiButton-colorInherit-86",
+                                    "contained": "MuiButton-contained-76",
+                                    "containedPrimary": "MuiButton-containedPrimary-77",
+                                    "containedSecondary": "MuiButton-containedSecondary-78",
+                                    "disabled": "MuiButton-disabled-85",
+                                    "extendedFab": "MuiButton-extendedFab-83",
+                                    "fab": "MuiButton-fab-82",
+                                    "flat": "MuiButton-flat-70",
+                                    "flatPrimary": "MuiButton-flatPrimary-71",
+                                    "flatSecondary": "MuiButton-flatSecondary-72",
+                                    "focusVisible": "MuiButton-focusVisible-84",
+                                    "fullWidth": "MuiButton-fullWidth-90",
+                                    "label": "MuiButton-label-66",
+                                    "mini": "MuiButton-mini-87",
+                                    "outlined": "MuiButton-outlined-73",
+                                    "outlinedPrimary": "MuiButton-outlinedPrimary-74",
+                                    "outlinedSecondary": "MuiButton-outlinedSecondary-75",
+                                    "raised": "MuiButton-raised-79",
+                                    "raisedPrimary": "MuiButton-raisedPrimary-80",
+                                    "raisedSecondary": "MuiButton-raisedSecondary-81",
+                                    "root": "MuiButton-root-65",
+                                    "sizeLarge": "MuiButton-sizeLarge-89",
+                                    "sizeSmall": "MuiButton-sizeSmall-88",
+                                    "text": "MuiButton-text-67",
+                                    "textPrimary": "MuiButton-textPrimary-68",
+                                    "textSecondary": "MuiButton-textSecondary-69",
+                                  }
+                                }
+                                color="inherit"
+                                component="button"
+                                disableFocusRipple={false}
+                                disabled={false}
+                                fullWidth={false}
+                                mini={false}
+                                onClick={[Function]}
+                                size="medium"
+                                type="button"
+                                variant="text"
+                              >
+                                <WithStyles(ButtonBase)
+                                  className="MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-colorInherit-86"
+                                  component="button"
+                                  disabled={false}
+                                  focusRipple={true}
+                                  focusVisibleClassName="MuiButton-focusVisible-84"
+                                  onClick={[Function]}
+                                  type="button"
+                                >
+                                  <ButtonBase
+                                    centerRipple={false}
+                                    className="MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-colorInherit-86"
+                                    classes={
+                                      Object {
+                                        "disabled": "MuiButtonBase-disabled-92",
+                                        "focusVisible": "MuiButtonBase-focusVisible-93",
+                                        "root": "MuiButtonBase-root-91",
+                                      }
+                                    }
+                                    component="button"
+                                    disableRipple={false}
+                                    disableTouchRipple={false}
+                                    disabled={false}
+                                    focusRipple={true}
+                                    focusVisibleClassName="MuiButton-focusVisible-84"
+                                    onClick={[Function]}
+                                    tabIndex="0"
+                                    type="button"
+                                  >
+                                    <button
+                                      className="MuiButtonBase-root-91 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-colorInherit-86"
+                                      disabled={false}
+                                      onBlur={[Function]}
+                                      onClick={[Function]}
+                                      onFocus={[Function]}
+                                      onKeyDown={[Function]}
+                                      onKeyUp={[Function]}
+                                      onMouseDown={[Function]}
+                                      onMouseLeave={[Function]}
+                                      onMouseUp={[Function]}
+                                      onTouchEnd={[Function]}
+                                      onTouchMove={[Function]}
+                                      onTouchStart={[Function]}
+                                      tabIndex="0"
+                                      type="button"
+                                    >
+                                      <span
+                                        className="MuiButton-label-66"
+                                      >
+                                        Login
+                                      </span>
+                                      <WithStyles(TouchRipple)
+                                        center={false}
+                                        innerRef={[Function]}
+                                      >
+                                        <TouchRipple
+                                          center={false}
+                                          classes={
+                                            Object {
+                                              "child": "MuiTouchRipple-child-98",
+                                              "childLeaving": "MuiTouchRipple-childLeaving-99",
+                                              "childPulsate": "MuiTouchRipple-childPulsate-100",
+                                              "ripple": "MuiTouchRipple-ripple-95",
+                                              "ripplePulsate": "MuiTouchRipple-ripplePulsate-97",
+                                              "rippleVisible": "MuiTouchRipple-rippleVisible-96",
+                                              "root": "MuiTouchRipple-root-94",
+                                            }
+                                          }
+                                        >
+                                          <TransitionGroup
+                                            childFactory={[Function]}
+                                            className="MuiTouchRipple-root-94"
+                                            component="span"
+                                            enter={true}
+                                            exit={true}
+                                          >
+                                            <span
+                                              className="MuiTouchRipple-root-94"
+                                            />
+                                          </TransitionGroup>
+                                        </TouchRipple>
+                                      </WithStyles(TouchRipple)>
+                                    </button>
+                                  </ButtonBase>
+                                </WithStyles(ButtonBase)>
+                              </Button>
+                            </WithStyles(Button)>
+                          </Route>
+                        </div>
+                      </div>
+                    </Toolbar>
+                  </WithStyles(Toolbar)>
+                </header>
+              </Paper>
+            </WithStyles(Paper)>
+          </AppBar>
+        </WithStyles(AppBar)>
+      </div>
+    </TopNav>
+  </Router>
+</BrowserRouter>
+`;

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NotFound/> it renders successfully 1`] = `
+<div
+  style={
+    Object {
+      "textAlign": "center",
+    }
+  }
+>
+  <pure(Error)
+    style={
+      Object {
+        "color": "red",
+        "height": 300,
+        "margin": "auto",
+        "width": 300,
+      }
+    }
+  />
+  <WithStyles(Typography)
+    style={
+      Object {
+        "color": "white",
+      }
+    }
+    variant="display3"
+  >
+    404
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    style={
+      Object {
+        "color": "white",
+      }
+    }
+    variant="display3"
+  >
+    Sorry, Not found
+  </WithStyles(Typography)>
+  <Route
+    render={[Function]}
+  />
+</div>
+`;

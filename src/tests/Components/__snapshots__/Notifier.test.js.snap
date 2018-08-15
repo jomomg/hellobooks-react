@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Notifier/> it renders successfully 1`] = `
+<div>
+  <WithStyles(Snackbar)
+    anchorOrigin={
+      Object {
+        "horizontal": "center",
+        "vertical": "top",
+      }
+    }
+    autoHideDuration={1400}
+    onClose={[Function]}
+    open={false}
+  >
+    <SnackbarContentWrapper
+      message=""
+      onClose={[Function]}
+      variant=""
+    />
+  </WithStyles(Snackbar)>
+</div>
+`;

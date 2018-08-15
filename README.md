@@ -17,6 +17,16 @@ Node.js(>10.5.0 Recommended), npm, Hellobooks API
 - Navigate to the link provided by the development server in your browser.
 - To run the tests, run `npm test` in a terminal
 
+## How to install Hellobooks API
+
+ - Pre-requisites: Python 3.6
+ - Clone this repository `git clone https://github.com/jomomg/hellobooks_api.git`
+ - Set up a virtual environment. `virtualenv` is recommended
+ - Install the apps dependencies by running `pip install -r requirements.txt`
+ - Open a terminal and `cd` into the cloned repository
+ - Run `python run.py`
+ - Heroku link: [Hellobooks API heroku link](hello-kitabu.herokuapp.com)
+ 
 ## More info
 
 - [Heroku app](hellobooks-react.herokuapp.com)
